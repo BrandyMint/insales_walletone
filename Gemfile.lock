@@ -50,6 +50,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.3)
+    configus (0.0.5)
     erubis (2.7.0)
     execjs (2.2.2)
     haml (4.0.6)
@@ -157,6 +158,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano-rails
   coffee-rails (~> 4.0.0)
+  configus
   haml-rails
   jquery-rails
   pg
