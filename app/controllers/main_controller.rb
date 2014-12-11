@@ -2,6 +2,6 @@ class MainController < ApplicationController
   def index
   end
 
-  def instruction
+  def manual
   end
 end

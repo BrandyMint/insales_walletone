@@ -6,8 +6,8 @@ class MainControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should get instruction' do
-    get :instruction
+  test 'should get manual' do
+    get :manual
     assert_response :success
   end
 

@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'haml-rails'
 gem 'configus'
+gem 'insales_api'
 
 group :development do
   gem 'spring'

@@ -17,7 +17,6 @@
           .rightHead
             %p
               = link_to 'Техподдержка', '#'
-              = image_tag 'techsupport_ico.gif'
               |
               #{link_to 'Форум', 'http://forum.insales.ru', target: '_blank'}
               |
@@ -31,6 +30,15 @@
             .tabLeftCorner
             .tabContent= link_to configus.app_name, '#'
             .tabRightCorner
+      .submenu
+        .submenuItem
+          .itemLeftCorner
+          .itemContent= link_to 'Настройка', root_path
+          .itemRightCorner
+        .submenuItem
+          .itemLeftCorner
+          .itemContent= link_to 'Инструкция', manual_path
+          .itemRightCorner
       .content
         -#= flash_messages
         = yield
