@@ -8,6 +8,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'haml-rails'
+gem 'configus'
+gem 'insales_api'
 
 group :development do
   gem 'spring'

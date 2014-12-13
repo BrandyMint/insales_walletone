@@ -1,0 +1,51 @@
+!!!
+%html{xmlns: 'http://www.w3.org/1999/xhtml'}
+  %head
+    %meta{content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type'}/
+    %link{href: '/assets/favicon.ico', rel: 'shortcut icon'}/
+    %title #{configus.app_name}
+    = csrf_meta_tags
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+
+  %body
+    .containerPage
+      .head
+        .headTop
+          .leftHead
+            %h1 #{configus.app_name}
+          .rightHead
+            %p
+              = link_to 'Техподдержка', '#'
+              |
+              #{link_to 'Форум', 'http://forum.insales.ru', target: '_blank'}
+              |
+              #{link_to 'Выйти', '#', method: 'delete'}
+        .leftTabs
+          .Tab
+            .tabLeftCorner
+            .tabContent= link_to image_tag('home_inactive_icon.png', title: 'Вернуться в магазин', alt: 'Вернуться в магазин'), '#'
+            .tabRightCorner
+          .activeTab
+            .tabLeftCorner
+            .tabContent= link_to configus.app_name, '#'
+            .tabRightCorner
+      .submenu
+        .submenuItem
+          .itemLeftCorner
+          .itemContent= link_to 'Настройка', root_path
+          .itemRightCorner
+        .submenuItem
+          .itemLeftCorner
+          .itemContent= link_to 'Инструкция', manual_path
+          .itemRightCorner
+      .content
+        -#= flash_messages
+        = yield
+      .footer
+        %div
+          %p
+            &copy;
+            = succeed ',' do
+              %span{style: 'color: #752F16; font-weight: bold;'} WalletOne
+            #{Time.now.year}. &nbsp;|&nbsp;

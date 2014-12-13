@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
 
-  root 'welcome#index'
+  root 'main#index'
+  get 'manual' => 'main#manual'
+  get 'first' => 'main#create_payment_getway'
+
+  get 'accounts/install'
+  get 'accounts/uninstall'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
