@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :authentication
+  before_action :authenticate
 
   protected
 
-  def authentication
+  def authenticate
     token = params[:token]
     domain = params[:domain]
     insales_id = params[:insales_id]
@@ -16,11 +14,12 @@ class ApplicationController < ActionController::Base
         save_session insales_api
       end
       if insales_api.authorized?
+        insales_api.configure_api
         @account ||= find_account(insales_api.shop)
       end
     else
       @account ||= find_account(domain, insales_id)
-      redirect_to 'http://insales.ru' and return unless @account
+      redirect_to configus.redirect_url and return unless @account
       initialize_api(@account)
     end
 
@@ -52,7 +51,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_session
-    session_api = session[:api]
-    Marshal::load(session_api) if session_api
+    Marshal::load(session[:api]) if session[:api]
   end
 end

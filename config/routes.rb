@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'main#index'
   get 'manual' => 'main#manual'
+  get 'first' => 'main#create_payment_getway'
 
   get 'accounts/install'
   get 'accounts/uninstall'

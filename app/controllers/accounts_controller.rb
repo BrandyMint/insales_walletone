@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
 
+  skip_action :authenticate
+
   def install
     domain = prepare(params[:shop])
     password = params[:token]
