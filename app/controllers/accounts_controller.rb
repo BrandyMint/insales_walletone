@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
-
-  skip_action :authenticate
+  protect_from_forgery only: :update
+  skip_before_action :authenticate, except: :update
 
   def install
     domain = prepare(params[:shop])
@@ -28,10 +28,19 @@ class AccountsController < ApplicationController
     end
   end
 
-  protected
+  def update
+    @account.update(account_params)
+    redirect_to root_path
+  end
+
+  private
 
   def prepare(str)
     str.to_s.strip.downcase
+  end
+
+  def account_params
+    params.require(:account).permit(:walletone_shop_id, :walletone_password)
   end
 
 end

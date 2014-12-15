@@ -1,0 +1,7 @@
+= form_for @account, url: accounts_path, method: :patch do |f|
+  = f.label :walletone_shop_id
+  = f.text_field :walletone_shop_id
+  %br
+  = f.label :walletone_password
+  = f.text_field :walletone_password
+  = f.submit 'Сохранить'

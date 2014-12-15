@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
 
-  root 'main#index'
-  get 'manual' => 'main#manual'
-  get 'first' => 'main#create_payment_getway'
+  root 'mains#index'
 
-  get 'accounts/install'
-  get 'accounts/uninstall'
+  post 'pay' => 'pays#pay'
+  post 'fail' => 'pays#fail'
+  post 'success' => 'pays#success'
+  post 'wmi_result' => 'pays#wmi_result'
+
+  resource :main, only: [] do
+    get :manual
+    get :create_payment_gateway
+  end
+
+  resource :accounts, only: :update do
+    get :install
+    get :uninstall
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

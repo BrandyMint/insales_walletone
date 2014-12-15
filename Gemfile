@@ -10,11 +10,13 @@ gem 'turbolinks'
 gem 'haml-rails'
 gem 'configus'
 gem 'insales_api'
+gem 'httparty'
 
 group :development do
   gem 'spring'
   gem 'pry'
   gem 'capistrano-rails'
+  gem 'awesome_print'
 end
 
 group :production do
