@@ -52,7 +52,7 @@ class PaysController < ApplicationController
     @account = Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     responce_signature = params.delete :WMI_SIGNATURE
     calculated_signature = walletone_signature(params.except(:action, :controller), @account.walletone_password)
-    if responce_signature == calculated_signature
+    if responce_signature == calculated_signature && params[:WMI_ORDER_STATE] == 'Accepted'
       #порядок важен для вычисления подписи
       insales_params = {
           shop_id: params[:shop_id],
@@ -62,6 +62,8 @@ class PaysController < ApplicationController
           paid: 1
       }
       insales_params[:signature] = insales_signature(insales_params, @account.walletone_password)
+      p '='*100
+      p insales_params
       response = HTTParty.post(insales_result_path(:success), body: insales_params)
       p '*'*100
       p response.body, response.code, response.message, response.headers.inspect
@@ -80,6 +82,7 @@ class PaysController < ApplicationController
 
   def insales_signature(params, password)
     values = params.merge(password: password).values.join(';')
+    p values
     Digest::MD5.hexdigest(values)
   end
 
