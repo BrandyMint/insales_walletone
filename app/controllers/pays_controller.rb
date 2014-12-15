@@ -28,8 +28,8 @@ class PaysController < ApplicationController
         WMI_CURRENCY_ID: @account.walletone_currency,
         WMI_PAYMENT_NO: transaction_id,
         WMI_DESCRIPTION: "BASE64:#{Base64.encode64(description)}",
-        WMI_SUCCESS_URL: insales_result_path(:success),
-        WMI_FAIL_URL: insales_result_path(:fail),
+        WMI_SUCCESS_URL: insales_order_path(key),
+        WMI_FAIL_URL: insales_order_path(key),
         WMI_RECIPIENT_LOGIN: email || phone,
         WMI_CUSTOMER_FIRSTNAME: client_name,
         WMI_CUSTOMER_LASTNAME: client_surname,
@@ -73,6 +73,10 @@ class PaysController < ApplicationController
 
   def insales_result_path(path_type)
     "http://#{@account.domain}/payments/external/#{@account.payment_gateway_id}/#{path_type.to_s}"
+  end
+
+  def insales_order_path(key)
+    "http://#{@account.domain}/order/#{key}"
   end
 
   def insales_signature(params, password)
