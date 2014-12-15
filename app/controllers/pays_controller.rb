@@ -28,8 +28,8 @@ class PaysController < ApplicationController
         WMI_CURRENCY_ID: @account.walletone_currency,
         WMI_PAYMENT_NO: transaction_id,
         WMI_DESCRIPTION: "BASE64:#{Base64.encode64(description)}",
-        WMI_SUCCESS_URL: "#{configus.host}/success",
-        WMI_FAIL_URL: "#{configus.host}/fail",
+        WMI_SUCCESS_URL: @account.success_url,
+        WMI_FAIL_URL: @account.fail_url,
         WMI_RECIPIENT_LOGIN: email || phone,
         WMI_CUSTOMER_FIRSTNAME: client_name,
         WMI_CUSTOMER_LASTNAME: client_surname,
@@ -37,12 +37,10 @@ class PaysController < ApplicationController
         amount: amount,
         transaction_id: transaction_id,
         key: key,
-        order_id: order_id,
-        phone: phone,
-        email: email
+        order_id: order_id
     }
 
-    signature = get_signature(wmi_params, @account.walletone_password)
+    signature = walletone_signature(wmi_params, @account.walletone_password)
     wmi_params[:WMI_SIGNATURE] = signature
 
     walletone_uri = URI(configus.walletone_payment_url)
@@ -51,34 +49,41 @@ class PaysController < ApplicationController
   end
 
   def wmi_result
-    p '*'*100
-    p params
-    p '='*100
     @account = Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     responce_signature = params.delete :WMI_SIGNATURE
-    p "responce signature: #{responce_signature}"
-    calculated_signature = get_signature(params.except(:action, :controller), @account.walletone_password)
-    p "calculated signature: #{calculated_signature}"
+    calculated_signature = walletone_signature(params.except(:action, :controller), @account.walletone_password)
     if responce_signature == calculated_signature
-      p 'ok'
+      #порядок важен для вычисления подписи
+      insales_params = {
+          shop_id: params[:shop_id],
+          amount: params[:WMI_PAYMENT_AMOUNT],
+          transaction_id: params[:transaction_id],
+          key: params[:key],
+          paid: 1
+      }
+      insales_params[:signature] = insales_signature(insales_params, @account.walletone_password)
+      response = HTTParty.post(insales_result_path(:success), body: insales_params)
+      p '*'*100
+      p response.body, response.code, response.message, response.headers.inspect
       render text: 'WMI_RESULT=OK'
     else
-      p 'fail'
-      render text: 'WMI_RESULT=OK'
+      HTTParty.post(insales_result_path(:fail))
+      render text: 'WMI_RESULT=RETRY&WMI_DESCRIPTION=fail signature'
     end
-  end
-
-  def fail
-    render text: 'ok'
-  end
-
-  def success
-    render text: 'ok'
   end
 
   private
 
-  def get_signature(params, secret)
+  def insales_result_path(path_type)
+    "http://#{@account.domain}/payments/external/#{@account.payment_gateway_id}/#{path_type.to_s}"
+  end
+
+  def insales_signature(params, password)
+    values = params.merge(password: password).values.join(';')
+    Digest::MD5.hexdigest(values)
+  end
+
+  def walletone_signature(params, secret)
     down_key_params = {}
     params.map{|k,v| down_key_params[k.downcase] = v}
     values = ''
