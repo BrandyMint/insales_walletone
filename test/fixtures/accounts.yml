@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  domain: myshop.insales.ru
+  password: pass1
+  insales_id: 1
+
+two:
+  domain: myothershop.insales.ru
+  password: pass2
+  insales_id: 2
