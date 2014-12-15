@@ -28,8 +28,8 @@ class PaysController < ApplicationController
         WMI_CURRENCY_ID: @account.walletone_currency,
         WMI_PAYMENT_NO: transaction_id,
         WMI_DESCRIPTION: "BASE64:#{Base64.encode64(description)}",
-        WMI_SUCCESS_URL: @account.success_url,
-        WMI_FAIL_URL: @account.fail_url,
+        WMI_SUCCESS_URL: insales_result_path(:success),
+        WMI_FAIL_URL: insales_result_path(:fail),
         WMI_RECIPIENT_LOGIN: email || phone,
         WMI_CUSTOMER_FIRSTNAME: client_name,
         WMI_CUSTOMER_LASTNAME: client_surname,
@@ -53,20 +53,15 @@ class PaysController < ApplicationController
     responce_signature = params.delete :WMI_SIGNATURE
     calculated_signature = walletone_signature(params.except(:action, :controller), @account.walletone_password)
     if responce_signature == calculated_signature && params[:WMI_ORDER_STATE] == 'Accepted'
-      #порядок важен для вычисления подписи
-      insales_params = {
-          shop_id: params[:shop_id],
+      insales_params = { #порядок важен для вычисления подписи
+          shop_id: params[:WMI_MERCHANT_ID],
           amount: params[:WMI_PAYMENT_AMOUNT],
           transaction_id: params[:transaction_id],
           key: params[:key],
           paid: 1
       }
       insales_params[:signature] = insales_signature(insales_params, @account.walletone_password)
-      p '='*100
-      p insales_params
-      response = HTTParty.post(insales_result_path(:success), body: insales_params)
-      p '*'*100
-      p response.body, response.code, response.message, response.headers.inspect
+      HTTParty.post(insales_result_path(:success), body: insales_params)
       render text: 'WMI_RESULT=OK'
     else
       HTTParty.post(insales_result_path(:fail))
@@ -82,7 +77,6 @@ class PaysController < ApplicationController
 
   def insales_signature(params, password)
     values = params.merge(password: password).values.join(';')
-    p values
     Digest::MD5.hexdigest(values)
   end
 
