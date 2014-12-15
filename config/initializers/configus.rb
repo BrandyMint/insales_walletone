@@ -1,12 +1,12 @@
 Configus.build Rails.env do
   env :production do
     app_name 'Wallet One'
-    host 'insales.walletone.com'
+    host 'http://insales.walletone.com'
     redirect_url 'http://insales.com'
     walletone_payment_url 'https://www.walletone.com/checkout/default.aspx'
 
     payment_gateway do
-      payment_url 'insales.walletone.com/pay'
+      payment_url -> {"#{host}/pay"}
       title 'Название метода оплаты'
       description 'Описание'
     end
@@ -14,11 +14,10 @@ Configus.build Rails.env do
   end
 
   env :development, parent: :production do
-    host 'localhost:3000'
+    host 'http://localhost:3000'
     redirect_url 'http://ya.ru'
 
     payment_gateway do
-      payment_url 'http://localhost:3000/pay'
       titile 'walletone payment getway'
       description 'самый офигительный способ оплатить свою покупку :)'
     end
