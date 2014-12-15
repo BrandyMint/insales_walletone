@@ -4,10 +4,12 @@ class AccountsController < ApplicationController
 
   def install
     domain = prepare(params[:shop])
-    password = params[:token]
+    token = params[:token]
     insales_id = params[:insales_id]
+    password = params[:password]
 
-    if domain && password && insales_id
+    if domain && token && insales_id
+      password ||= Digest::MD5.hexdigest(token+InsalesApi::App.api_secret)
       Account.create(domain: domain, password: password, insales_id: insales_id)
       render nothing: true, status: :ok, content_type: 'text/html'
     else
