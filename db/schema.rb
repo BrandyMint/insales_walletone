@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215153344) do
+ActiveRecord::Schema.define(version: 20141213231216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 20141215153344) do
     t.string   "walletone_password"
     t.integer  "walletone_currency"
     t.integer  "payment_gateway_id"
-    t.string   "success_url"
-    t.string   "fail_url"
   end
 
   add_index "accounts", ["domain"], name: "index_accounts_on_domain", unique: true, using: :btree
