@@ -42,7 +42,7 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:walletone_shop_id, :walletone_password)
+    params.require(:account).permit(:walletone_shop_id, :walletone_password, :walletone_currency, :success_url, :fail_url)
   end
 
 end
