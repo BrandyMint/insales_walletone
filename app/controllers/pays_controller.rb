@@ -57,7 +57,7 @@ class PaysController < ApplicationController
     @account = Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     responce_signature = params.delete :WMI_SIGNATURE
     p "responce signature: #{responce_signature}"
-    calculated_signature = get_signature(params, @account.walletone_password)
+    calculated_signature = get_signature(params.except(:action, :controller), @account.walletone_password)
     p "calculated signature: #{calculated_signature}"
     if responce_signature == calculated_signature
       p 'ok'
