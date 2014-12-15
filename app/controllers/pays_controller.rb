@@ -53,7 +53,6 @@ class PaysController < ApplicationController
   def wmi_result
     p '*'*100
     p params
-    p params.to_json
     p '='*100
     @account = Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     responce_signature = params.delete :WMI_SIGNATURE
