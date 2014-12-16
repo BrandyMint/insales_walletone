@@ -1,5 +1,4 @@
 class MainsController < ApplicationController
-
   def index
   end
 
@@ -19,5 +18,4 @@ class MainsController < ApplicationController
       @account.update(payment_gateway_id: @walletone_payment_gateway.id)
     end
   end
-
 end

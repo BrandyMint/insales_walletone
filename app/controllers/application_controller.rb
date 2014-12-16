@@ -19,10 +19,9 @@ class ApplicationController < ActionController::Base
       end
     else
       @account ||= find_account(domain, insales_id)
-      redirect_to configus.redirect_url and return unless @account
+      redirect_to(configus.redirect_url) and return unless @account
       initialize_api(@account)
     end
-
   end
 
   def initialize_api(account)
@@ -47,10 +46,10 @@ class ApplicationController < ActionController::Base
   end
 
   def save_session(api)
-    session[:api] = Marshal::dump(api)
+    session[:api] = Marshal.dump(api)
   end
 
   def load_session
-    Marshal::load(session[:api]) if session[:api]
+    Marshal.load(session[:api]) if session[:api]
   end
 end
