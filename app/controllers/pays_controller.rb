@@ -44,9 +44,9 @@ class PaysController < ApplicationController
       WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
       WMI_CUSTOMER_FIRSTNAME: client_name,
       WMI_CUSTOMER_LASTNAME: client_surname,
-      WMI_CUSTOMER_EMAIL: params[:email]
+      WMI_CUSTOMER_EMAIL: params[:email],
+      key: params[:key]
     }
-    wmi_params.merge!(params)
     initialize_api(@account)
     payment_gateway = InsalesApi::PaymentGateway.find(@account.payment_gateway_id)
     wmi_params[:WMI_SIGNATURE] = walletone_signature(wmi_params, payment_gateway.password)
@@ -57,7 +57,7 @@ class PaysController < ApplicationController
     insales_params = { # порядок важен для вычисления подписи
       shop_id: params[:WMI_MERCHANT_ID],
       amount: params[:WMI_PAYMENT_AMOUNT],
-      transaction_id: params[:transaction_id],
+      transaction_id: params[:WMI_PAYMENT_NO],
       key: params[:key],
       paid: 1
     }
