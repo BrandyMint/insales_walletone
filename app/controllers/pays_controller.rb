@@ -28,24 +28,31 @@ class PaysController < ApplicationController
     end
   end
 
+  def success
+    redirect_to insales_order_path(params[:key])
+  end
+
+  def fail
+    redirect_to insales_order_path(params[:key])
+  end
+
   private
 
   def calculate_walletone_params(params)
     client_surname, client_name = get_client_fio(params[:order_id])
-    order_path = insales_order_path(params[:key])
     wmi_params = {
       WMI_MERCHANT_ID: params[:shop_id],
       WMI_PAYMENT_AMOUNT: params[:amount],
       WMI_CURRENCY_ID: @account.walletone_currency,
       WMI_PAYMENT_NO: params[:transaction_id],
       WMI_DESCRIPTION: "BASE64:#{Base64.encode64(params[:description])}",
-      WMI_SUCCESS_URL: order_path,
-      WMI_FAIL_URL: order_path,
+      WMI_SUCCESS_URL: redirect_path(:success),
+      WMI_FAIL_URL: redirect_path(:fail),
       WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
       WMI_CUSTOMER_FIRSTNAME: client_name,
       WMI_CUSTOMER_LASTNAME: client_surname,
       WMI_CUSTOMER_EMAIL: params[:email],
-      key: params[:key]
+      key: params[:key],
     }
     initialize_api(@account)
     payment_gateway = InsalesApi::PaymentGateway.find(@account.payment_gateway_id)
@@ -87,11 +94,16 @@ class PaysController < ApplicationController
     "http://#{@account.domain}/payments/external/#{@account.payment_gateway_id}/#{path_type}"
   end
 
+  def redirect_path(path_type)
+    "http://#{configus.host}/#{path_type}"
+  end
+
   def insales_order_path(key)
+    @account ||= Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     "http://#{@account.domain}/orders/#{key}"
   end
 
-  def insales_signature(params, password)
+    def insales_signature(params, password)
     values = params.merge(password: password).values.join(';')
     Digest::MD5.hexdigest(values)
   end
