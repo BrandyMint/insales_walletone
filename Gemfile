@@ -17,6 +17,7 @@ group :development do
   gem 'pry'
   gem 'capistrano-rails'
   gem 'awesome_print'
+  gem 'rubocop'
 end
 
 group :production do
