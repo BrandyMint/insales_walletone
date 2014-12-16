@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
     password = params[:password]
 
     if domain && token && insales_id
-      password ||= Digest::MD5.hexdigest(token+InsalesApi::App.api_secret)
+      password ||= Digest::MD5.hexdigest(token + InsalesApi::App.api_secret)
       Account.create(domain: domain, password: password, insales_id: insales_id)
       render nothing: true, status: :ok, content_type: 'text/html'
     else
@@ -44,5 +44,4 @@ class AccountsController < ApplicationController
   def account_params
     params.require(:account).permit(:walletone_shop_id, :walletone_password, :walletone_currency, :success_url, :fail_url)
   end
-
 end

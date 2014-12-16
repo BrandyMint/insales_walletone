@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'mains#index'
 
   post 'pay' => 'pays#pay'
@@ -14,5 +13,4 @@ Rails.application.routes.draw do
     get :install
     get :uninstall
   end
-
 end
