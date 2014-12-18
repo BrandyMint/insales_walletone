@@ -54,7 +54,7 @@ class PaysController < ApplicationController
       WMI_CUSTOMER_FIRSTNAME: client_name,
       WMI_CUSTOMER_LASTNAME: client_surname,
       WMI_CUSTOMER_EMAIL: params[:email],
-      key: params[:key],
+      key: params[:key]
     }
     initialize_api(@account)
     payment_gateway = InsalesApi::PaymentGateway.find(@account.payment_gateway_id)
@@ -101,7 +101,7 @@ class PaysController < ApplicationController
     down_key_params = {}
     params.map { |k, v| down_key_params[k.downcase] = v }
     values = ''
-    down_key_params.sort.map { |k, v| values += v.to_s }
+    down_key_params.sort.map { |_k, v| values += v.to_s }
     Digest::MD5.base64digest(values + secret)
   end
 end
