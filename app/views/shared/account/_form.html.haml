@@ -1,0 +1,4 @@
+= form_for @account, url: accounts_path, method: :patch do |f|
+  = f.label :walletone_currency
+  = f.select :walletone_currency, options_for_select(INSALES_CURRENCIES, @account.walletone_currency)
+  = f.submit 'Сохранить'

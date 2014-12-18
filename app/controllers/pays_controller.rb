@@ -20,7 +20,7 @@ class PaysController < ApplicationController
     render text: 'WMI_RESULT=RETRY&WMI_DESCRIPTION=invalid signature' unless payment_valid?(params)
     render text: 'WMI_RESULT=RETRY&WMI_DESCRIPTION=invalid state' unless params[:WMI_ORDER_STATE] == 'Accepted'
     insales_params = calculate_insales_params(params)
-    response = HTTParty.post(insales_result_path(:success), body: insales_params)
+    response = HTTParty.post(view_context.insales_result_url(@account, :success), body: insales_params)
     if response.code == '200'
       render text: 'WMI_RESULT=OK'
     else
@@ -29,11 +29,13 @@ class PaysController < ApplicationController
   end
 
   def success
-    redirect_to insales_order_path(params[:key])
+    @account ||= Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
+    redirect_to view_context.insales_order_url(@account, params[:key])
   end
 
   def fail
-    redirect_to insales_order_path(params[:key])
+    @account ||= Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
+    redirect_to view_context.insales_order_url(@account, params[:key])
   end
 
   private
@@ -46,8 +48,8 @@ class PaysController < ApplicationController
       WMI_CURRENCY_ID: @account.walletone_currency,
       WMI_PAYMENT_NO: params[:transaction_id],
       WMI_DESCRIPTION: "BASE64:#{Base64.encode64(params[:description])}",
-      WMI_SUCCESS_URL: redirect_path(:success),
-      WMI_FAIL_URL: redirect_path(:fail),
+      WMI_SUCCESS_URL: view_context.redirect_url(:success),
+      WMI_FAIL_URL: view_context.redirect_url(:fail),
       WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
       WMI_CUSTOMER_FIRSTNAME: client_name,
       WMI_CUSTOMER_LASTNAME: client_surname,
@@ -90,20 +92,7 @@ class PaysController < ApplicationController
     insales_app.configure_api
   end
 
-  def insales_result_path(path_type)
-    "http://#{@account.domain}/payments/external/#{@account.payment_gateway_id}/#{path_type}"
-  end
-
-  def redirect_path(path_type)
-    "http://#{configus.host}/#{path_type}"
-  end
-
-  def insales_order_path(key)
-    @account ||= Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
-    "http://#{@account.domain}/orders/#{key}"
-  end
-
-    def insales_signature(params, password)
+  def insales_signature(params, password)
     values = params.merge(password: password).values.join(';')
     Digest::MD5.hexdigest(values)
   end

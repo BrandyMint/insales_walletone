@@ -10,7 +10,8 @@ class AccountsController < ApplicationController
 
     if domain && token && insales_id
       password ||= Digest::MD5.hexdigest(token + InsalesApi::App.api_secret)
-      Account.create(domain: domain, password: password, insales_id: insales_id)
+      # по умолчанию аккаунт создается с валютой - рубль
+      Account.create(domain: domain, password: password, insales_id: insales_id, walletone_currency: 643)
       render nothing: true, status: :ok, content_type: 'text/html'
     else
       render nothing: true, status: 422, content_type: 'text/html'
@@ -42,6 +43,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:walletone_shop_id, :walletone_password, :walletone_currency, :success_url, :fail_url)
+    params.require(:account).permit(:payment_gateway_id, :walletone_currency)
   end
 end
