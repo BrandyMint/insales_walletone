@@ -1,3 +1,3 @@
 module ApplicationHelper
-  include ::CustomUrlHelpers
+  include CustomUrlHelpers
 end

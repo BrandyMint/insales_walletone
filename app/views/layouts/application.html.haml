@@ -13,22 +13,21 @@
       .head
         .headTop
           .leftHead
-            %h1 #{configus.app_name}
+            %h1 Настройка платежного модуля "Единый кошелек"
           .rightHead
             %p
-              = link_to 'Техподдержка', '#'
+              = link_to 'Техподдержка', 'mailto:support@walletone.com'
               |
               #{link_to 'Форум', 'http://forum.insales.ru', target: '_blank'}
-              |
-              #{link_to 'Выйти', '#', method: 'delete'}
         .leftTabs
           .Tab
             .tabLeftCorner
-            .tabContent= link_to image_tag('home_inactive_icon.png', title: 'Вернуться в магазин', alt: 'Вернуться в магазин'), '#'
+            .tabContent
+              = link_to image_tag('home_inactive_icon.png', title: 'Вернуться в бек-офис', alt: 'Вернуться в бек-офис'), admin_panel_url(@account)
             .tabRightCorner
           .activeTab
             .tabLeftCorner
-            .tabContent= link_to configus.app_name, '#'
+            .tabContent= configus.app_name
             .tabRightCorner
       .submenu
         .submenuItem
@@ -48,4 +47,4 @@
             &copy;
             = succeed ',' do
               %span{style: 'color: #752F16; font-weight: bold;'} WalletOne
-            #{Time.now.year}. &nbsp;|&nbsp;
+            #{Time.now.year}

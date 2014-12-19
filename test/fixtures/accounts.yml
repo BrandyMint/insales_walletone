@@ -1,11 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  domain: myshop.insales.ru
-  password: pass1
-  insales_id: 1
+my_shop:
+  domain: <%= ENV['INSALES_DOMAIN'] %>
+  password: <%= ENV['INSALES_API_SECRET'] %>
+  insales_id: <%= ENV['INSALES_ID'] %>
+  walletone_shop_id: <%= ENV['WALLETONE_SHOP_ID'] %>
+  walletone_password: <%= ENV['WALLETONE_PASSWORD'] %>
+  walletone_currency: 643
+  payment_gateway_id: <%= ENV['INSALES_GATEWAY_ID'] %>
 
-two:
+
+another:
   domain: myothershop.insales.ru
   password: pass2
-  insales_id: 2
+  insales_id: 222
+  walletone_shop_id: 234235
+  walletone_password: asfwfwefasdfasdfasdfasdf
+  walletone_currency: 643
+  payment_gateway_id: 3456

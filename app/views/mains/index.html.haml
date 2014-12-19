@@ -1,7 +1,7 @@
+=render 'shared/account/form'
+
 - if payment_gateway_inside_insales?(@account)
   = label_tag :payment_gateway_id
-  = link_to get_payment_gateway_title(@account.payment_gateway_id), insales_payment_gateway_edit_url(@account), target: '_blank'
+  = link_to get_payment_gateway_title(@account.payment_gateway_id), insales_payment_gateway_url(@account), target: '_blank'
 - else
   = button_to 'Создать метод оплаты', initialize_payment_gateway_main_path, method: :get
-
-=render 'shared/account/form'

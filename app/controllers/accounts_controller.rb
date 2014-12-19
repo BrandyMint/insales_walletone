@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
   protect_from_forgery only: :update
   skip_before_action :authenticate, except: :update
 
+  # https://wiki.insales.ru/wiki/%D0%9A%D0%B0%D0%BA_%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F_%D1%81_InSales
   def install
     domain = prepare(params[:shop])
     token = params[:token]
@@ -43,6 +44,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:payment_gateway_id, :walletone_currency)
+    params.require(:account).permit(:payment_gateway_id, :walletone_currency, :walletone_shop_id, :walletone_password)
   end
 end

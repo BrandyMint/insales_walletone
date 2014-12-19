@@ -24,3 +24,10 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
 end
+
+group :test do
+  gem 'vcr'
+  gem 'wrong'
+  gem 'webmock'
+  gem 'simplecov', require: false
+end
