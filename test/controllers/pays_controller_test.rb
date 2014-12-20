@@ -9,8 +9,8 @@ class PaysControllerTest < ActionController::TestCase
 
   test 'should get fail' do
     params = {
-        WMI_MERCHANT_ID: @account.walletone_shop_id,
-        key: 'bf3f5e24d40e5f7caa5fa9d64070b5e3'
+      WMI_MERCHANT_ID: @account.walletone_shop_id,
+      key: 'bf3f5e24d40e5f7caa5fa9d64070b5e3'
     }
     post :fail, params
     assert_response :redirect
@@ -18,8 +18,8 @@ class PaysControllerTest < ActionController::TestCase
 
   test 'should get success' do
     params = {
-        WMI_MERCHANT_ID: @account.walletone_shop_id,
-        key: 'bf3f5e24d40e5f7caa5fa9d64070b5e3'
+      WMI_MERCHANT_ID: @account.walletone_shop_id,
+      key: 'bf3f5e24d40e5f7caa5fa9d64070b5e3'
     }
     post :success, params
     assert_response :redirect
@@ -48,8 +48,8 @@ class PaysControllerTest < ActionController::TestCase
       'WMI_UPDATE_DATE' => '2014-12-16 19:43:03'
     }
     params['WMI_SIGNATURE'] = walletone_signature(params, account.walletone_password)
-    stub_request(:post, "http://#{account.domain}/payments/external/#{account.payment_gateway_id}/success").
-        to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://#{account.domain}/payments/external/#{account.payment_gateway_id}/success")
+      .to_return(status: 200, body: '', headers: {})
     post :walletone_result, params
     assert_response :success
   end
@@ -57,14 +57,14 @@ class PaysControllerTest < ActionController::TestCase
   test 'should post pay' do
     account = accounts(:my_shop)
     params = {
-        shop_id: account.walletone_shop_id,
-        amount: 0.1,
-        transaction_id: 2197421,
-        key: '201c02c69db32b95ecf878b3172121c4',
-        description: 'Заказ №9999 на сайте test.myinsales.ru',
-        order_id: 4020290,
-        phone: 9987654321,
-        email: 'test@example.com'
+      shop_id: account.walletone_shop_id,
+      amount: 0.1,
+      transaction_id: 2_197_421,
+      key: '201c02c69db32b95ecf878b3172121c4',
+      description: 'Заказ №9999 на сайте test.myinsales.ru',
+      order_id: 4_020_290,
+      phone: 9_987_654_321,
+      email: 'test@example.com'
     }
 
     VCR.use_cassette('order') do

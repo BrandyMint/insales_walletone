@@ -16,5 +16,4 @@ class ActiveSupport::TestCase
   Wrong.config.color
   include WebMock::API
   fixtures :all
-
 end

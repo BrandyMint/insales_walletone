@@ -1,20 +1,19 @@
 module PaymentHelpers
-
   def calculate_walletone_params(account, params)
     client_surname, client_name = get_client_fio(account, params[:order_id])
     wmi_params = {
-        WMI_MERCHANT_ID: params[:shop_id],
-        WMI_PAYMENT_AMOUNT: params[:amount],
-        WMI_CURRENCY_ID: account.walletone_currency,
-        WMI_PAYMENT_NO: params[:transaction_id],
-        WMI_DESCRIPTION: "BASE64:#{Base64.encode64(params[:description])}",
-        WMI_SUCCESS_URL: view_context.redirect_url(:success),
-        WMI_FAIL_URL: view_context.redirect_url(:fail),
-        WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
-        WMI_CUSTOMER_FIRSTNAME: client_name,
-        WMI_CUSTOMER_LASTNAME: client_surname,
-        WMI_CUSTOMER_EMAIL: params[:email],
-        key: params[:key]
+      WMI_MERCHANT_ID: params[:shop_id],
+      WMI_PAYMENT_AMOUNT: params[:amount],
+      WMI_CURRENCY_ID: account.walletone_currency,
+      WMI_PAYMENT_NO: params[:transaction_id],
+      WMI_DESCRIPTION: "BASE64:#{Base64.encode64(params[:description])}",
+      WMI_SUCCESS_URL: view_context.redirect_url(:success),
+      WMI_FAIL_URL: view_context.redirect_url(:fail),
+      WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
+      WMI_CUSTOMER_FIRSTNAME: client_name,
+      WMI_CUSTOMER_LASTNAME: client_surname,
+      WMI_CUSTOMER_EMAIL: params[:email],
+      key: params[:key]
     }
     wmi_params[:WMI_SIGNATURE] = walletone_signature(wmi_params, account.walletone_password)
     wmi_params
@@ -59,5 +58,4 @@ module PaymentHelpers
     down_key_params.sort.map { |_k, v| values += v.to_s }
     Digest::MD5.base64digest(values + secret)
   end
-
 end

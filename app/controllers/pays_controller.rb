@@ -11,7 +11,7 @@ class PaysController < ApplicationController
     wmi_params = calculate_walletone_params(@account, params)
     walletone_uri = URI(configus.walletone_payment_url)
     walletone_uri.query = wmi_params.to_query
-    redirect_to walletone_uri.to_s and return
+    redirect_to(walletone_uri.to_s)
   end
 
   def walletone_result
@@ -36,5 +36,4 @@ class PaysController < ApplicationController
     @account ||= Account.find_by(walletone_shop_id: params[:WMI_MERCHANT_ID])
     redirect_to view_context.insales_order_url(@account, params[:key])
   end
-
 end

@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 module W1InsalesApp
   class Application < Rails::Application
-    config.autoload_paths += Dir[ "#{config.root}/lib/**/" ]
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.time_zone = 'Moscow'
 
     config.generators do |g|
