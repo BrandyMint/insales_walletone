@@ -15,6 +15,10 @@ module CustomUrlHelpers
     "http://#{account.domain}/admin2/payment_gateways/#{account.payment_gateway_id}/edit"
   end
 
+  def insales_payment_gateways_url(account)
+    "http://#{account.domain}/admin2/payment_gateways"
+  end
+
   def shop_url(account)
     "http://#{account.domain}"
   end

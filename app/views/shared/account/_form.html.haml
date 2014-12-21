@@ -1,11 +1,25 @@
 = form_for @account, url: accounts_path, method: :patch do |f|
-  = f.label :walletone_shop_id
-  = f.text_field :walletone_shop_id
-  %br
-  = f.label :walletone_password
-  = f.text_field :walletone_password
-  %br
-  = f.label :walletone_currency
-  = f.select :walletone_currency, options_for_select(INSALES_CURRENCIES, @account.walletone_currency)
-  %br
-  = f.submit 'Сохранить'
+  %table
+    %tbody
+      %tr
+        %td.desc
+          = label_tag 'Идентификтор магазина Walleton'
+          %span.warning *
+        %td.right
+          = f.text_field :walletone_shop_id
+      %tr
+        %td.desc
+          = label_tag 'ЭЦП вашей Кассы (MD5/SHA1)'
+          %span.warning *
+        %td.right
+          = f.text_field :walletone_password, style: 'width:400px'
+      %tr
+        %td.desc
+          = label_tag 'Валюта магазина'
+          %span.warning *
+        %td.right
+          = f.select :walletone_currency, options_for_select(INSALES_CURRENCIES, @account.walletone_currency)
+      %tr
+        %td.desc &nbsp;
+        %td.right
+          = f.submit 'Сохранить'
