@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       end
     else
       @account ||= find_account(domain, insales_id)
-      redirect_to(configus.redirect_url) and return unless @account
+      redirect_to configus.redirect_url and return unless @account
       initialize_api(@account)
     end
   end
