@@ -12,6 +12,8 @@ gem 'configus'
 gem 'insales_api'
 gem 'httparty'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development do
   gem 'spring'
   gem 'pry'
