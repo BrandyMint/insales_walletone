@@ -1,0 +1,26 @@
+.helper
+  Необходимо создать
+  =link_to 'вид оплаты', insales_payment_gateways_url(@account)
+  с настройками представлеными выше
+  = button_to 'Создать вид оплаты', initialize_payment_gateway_main_path, method: :get
+
+- @payments.each do |payment_mode, payment_type_list|
+  %h3= payment_mode
+  .content-table
+    %table
+      %thead
+        %tr
+          %th Способ оплаты
+          %th Идентификатор
+          %th Создать способ оплаты
+      %tbody
+        - payment_type_list.each do |payment_type, payments_list|
+          %tr.content-table-group
+            %td= payment_type
+            %td
+            %td
+          - payments_list.each do |payment_name, payment_id|
+            %tr
+              %td= payment_name
+              %td= payment_id
+              %td= link_to 'Создать', initialize_payment_gateway_main_path(type: payment_id, name: payment_name), method: :get

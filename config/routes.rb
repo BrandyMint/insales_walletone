@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :main, only: [] do
     get :manual
     get :initialize_payment_gateway
+    get :new_payment_gateway
   end
 
   resource :accounts, only: :update do

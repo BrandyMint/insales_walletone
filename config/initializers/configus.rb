@@ -3,7 +3,10 @@ Configus.build Rails.env do
     host -> { ENV['INSALES_API_HOST'] }
     app_name 'Wallet One'
     redirect_url 'http://insales.com'
+    # старый платежный шлюз
     walletone_payment_url 'https://www.walletone.com/checkout/default.aspx'
+    # новый платежный шлюз, пока работает с ошибками
+    # walletone_payment_url 'https://wl.walletone.com/checkout/checkout/Index'
     payment_url -> { "http://#{host}/pay" }
 
     payment_gateway do

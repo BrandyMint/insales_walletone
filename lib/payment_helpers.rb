@@ -10,11 +10,15 @@ module PaymentHelpers
       WMI_SUCCESS_URL: view_context.redirect_url(:success),
       WMI_FAIL_URL: view_context.redirect_url(:fail),
       WMI_RECIPIENT_LOGIN: params[:email] || params[:phone],
-      WMI_CUSTOMER_FIRSTNAME: client_name,
-      WMI_CUSTOMER_LASTNAME: client_surname,
       WMI_CUSTOMER_EMAIL: params[:email],
       key: params[:key]
     }
+
+    wmi_params[:WMI_CUSTOMER_FIRSTNAME] = "BASE64:#{Base64.encode64(client_name)}" if client_name
+    wmi_params[:WMI_CUSTOMER_LASTNAME] = "BASE64:#{Base64.encode64(client_surname)}" if client_surname
+    wmi_params[:WMI_PTENABLED] = params[:q] if params[:q]
+
+
     wmi_params[:WMI_SIGNATURE] = walletone_signature(wmi_params, account.walletone_password)
     wmi_params
   end

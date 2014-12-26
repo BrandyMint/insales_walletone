@@ -1,0 +1,140 @@
+Электронные деньги:
+  Единый кошелек:
+    Единый кошелек: WalletOne
+    W1 RUB: WalletOneRUB
+    W1 UAH: WalletOneUAH
+    W1 USD: WalletOneUSD
+    W1 EUR: WalletOneEUR
+    W1 ZAR: WalletOneZAR
+    W1 BYR: WalletOneBYR
+    W1 TJS: WalletOneTJS
+  Яндекс.Деньги:
+    Яндекс.Деньги: YandexMoneyRUB
+  WebMoney:
+    WMR: WebMoneyRUB
+    WMU: WebMoneyUAH
+    WMZ: WebMoneyUSD
+  QIWI Кошелек:
+    QIWI Кошелек: QiwiWalletRUB
+  Ukash:
+    Ukash: UkashEUR
+  MoneyMail:
+    MoneyMail: MoneyMailRUB
+  RBK Money:
+    RBK Money: RbkMoneyRUB
+  Z-Payment:
+    Z-Payment: ZPaymentRUB
+  B-pay:
+    B-Pay: BPayMDL
+  CashU:
+    CashU: CashUUSD
+  WebCreds:
+    WebCreds: WebCredsRUB
+  EasyPay:
+    EasyPay: EasyPayBYR
+  LiqPay Money:
+    LiqPay Money: LiqPayMoney
+    LiqPayMoneyRUB: LiqPayMoneyRUB
+    LiqPayMoneyUAH: LiqPayMoneyUAH
+    LiqPayMoneyUSD: LiqPayMoneyUSD
+  OKPAY:
+    OKPAY: OkpayUSD
+Мобильная коммерция:
+  Мобильная коммерция:
+    Мобильный платеж «Билайн» (Россия): BeelineRUB
+    Мобильный платеж «МТС» (Россия): MtsRUB
+    Мобильный платеж «Мегафон» (Россия): MegafonRUB
+Наличные:
+  Платежные терминалы:
+    Платежные терминалы: CashTerminal
+    Платежные терминалы России: CashTerminalRUB
+    Платежные терминалы Украины: CashTerminalUAH
+    Платежные терминалы Молдовы: CashTerminalMDL
+    Платежные терминалы Грузии: CashTerminalGEL
+  Салоны связи:
+    Салоны связи: MobileRetails
+    Салоны связи «Евросеть»: EurosetRUB
+    Салоны связи «Связной»: SvyaznoyRUB
+    Салоны связи «Мобил Элемент»: MobilElementRUB
+    Салоны связи «Альт-телеком»: AltTelecomRUB
+    Салоны связи «Диксис»: DixisRUB
+    Салоны связи «Цифроград»: CifrogradRUB
+    Салоны связи «Сотовый мир»: CellularWorldRUB
+    Салоны связи «Форвард Мобайл»: ForwardMobileRUB
+  Отделения банков:
+    Отделения банков: BankOffice
+    Отделения Сбербанка России: SberbankRUB
+    Отделения Приватбанка в Украине: PrivatbankUAH
+    Отделения Правэкс-Банка в Украине: PravexBankUAH
+    Отделения УкрСиббанка в Украине: UkrsibBankUAH
+    Отделения Liberty Bank: LibertyBankGEL
+    Отделения Почты России: RussianPostRUB
+  Денежные переводы:
+    Денежные переводы: MoneyTransfer
+    Денежные переводы «ЛИДЕР»: LiderRUB
+    Денежные переводы «CONTACT»: ContactRUB
+    Денежные переводы «Unistream»: UnistreamRUB
+    Anelik money transfers: AnelikRUB
+  Курьерские службы доставки:
+    RedExpress: RedCashRUB
+Безналичные:
+  Интернет-банки:
+    Интернет-банки: OnlineBank
+    Интернет-банк «Альфа-Клик» («Альфа-Банк»): AlfaclickRUB
+    Интернет-банк «Приват24»: Privat24UAH
+    Интернет-банк «PSB-Retail» («Промсвязьбанк»): PsbRetailRUB
+    Интернет-банк «Связной Банк»: QBankRUB
+    Сбербанк ОнЛ@йн: SberOnlineRUB
+  Банковский перевод:
+    Банковский перевод: BankTransfer
+    Банковский перевод в рублях: BankTransferRUB
+    Банковский перевод в гривнах: BankTransferUAH
+    Банковский перевод в долларах: BankTransferUSD
+  VISA:
+    VISA: VISA
+    VISA RUB: CreditCardRUB
+    VISA UAH: CreditCardUAH
+    VISA USD: CreditCardUSD
+    VISA EUR: CreditCardEUR
+  MasterCard:
+    MasterCard: MasterCard
+    MasterCard RUB: CreditCardRUB
+    MasterCard UAH: CreditCardUAH
+    MasterCard USD: CreditCardUSD
+    MasterCard EUR: CreditCardEUR
+  Maestro:
+    Maestro: Maestro
+    Maestro RUB: CreditCardRUB
+    Банковские карты НСМЭП Украины: NsmepUAH
+    Giropay (Германия): GiropayDeEUR
+    Paysafecard: PaysafecardEUR
+    iDEAL (Нидерланды): IdealNlEUR
+    Przelewy24: Przelewy24PLN
+    Teleingreso: TeleingresoEsEUR
+    Direct Debit в Германии (ELV): ElvEUR
+  Sofort Banking:
+    Sofort Banking: SofortBanking
+    Sofort Banking (Германия): SofortDeEUR
+    Sofort Banking (Австрия): SofortAtEUR
+    Sofort Banking (Бельгия): SofortBeEUR
+    Sofort Banking (Франция): SofortFrEUR
+    Sofort Banking (Нидерланды): SofortNlEUR
+    Sofort Banking (Великобритания): SofortUkGBP
+  POLi payments:
+    POLi payments: PoliPayments
+    POLi Payments (Новая Зеландия): PoliNzNZD
+    POLi Payments (Австралия): PoliAuAUD
+  TrustPay:
+    TrustPay: TrustPay
+    TrustPay (Босния и Герцеговина): TrustPayBaEUR
+    TrustPay (Хорватия): TrustPayHrEUR
+    TrustPay (Болгария): TrustPayBgEUR
+    TrustPay (Словения): TrustPaySiEUR
+    TrustPay (Латвия): TrustPayLvEUR
+    TrustPay (Литва): TrustPayLtEUR
+    TrustPay (Эстония): TrustPayEeEUR
+    TrustPay (Венгрия): TrustPayHuEUR
+    TrustPay (Словакия): TrustPaySkEUR
+    TrustPay (Чешская Республика): TrustPayCzEUR
+    TrustPay (Польша): TrustPayPlEUR
+
