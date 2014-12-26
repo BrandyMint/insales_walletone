@@ -14,11 +14,16 @@ class ApplicationController < ActionController::Base
         insales_api.configure_api
         @account ||= find_account(insales_api.shop)
       else
+        reset_session
         redirect_to configus.redirect_url
       end
     else
       @account ||= find_account(domain, insales_id)
-      redirect_to configus.redirect_url and return unless @account
+      unless @account
+        reset_session
+        redirect_to configus.redirect_url
+        return
+      end
       initialize_api(@account)
     end
   end
