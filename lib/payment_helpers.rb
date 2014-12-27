@@ -18,7 +18,6 @@ module PaymentHelpers
     wmi_params[:WMI_CUSTOMER_LASTNAME] = "BASE64:#{Base64.encode64(client_surname)}" if client_surname
     wmi_params[:WMI_PTENABLED] = params[:q] if params[:q]
 
-
     wmi_params[:WMI_SIGNATURE] = walletone_signature(wmi_params, account.walletone_password)
     wmi_params
   end

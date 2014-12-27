@@ -7,7 +7,7 @@
 - @payments.each do |payment_mode, payment_type_list|
   %h3= payment_mode
   .content-table
-    %table
+    %table.items
       %thead
         %tr
           %th Способ оплаты
@@ -15,8 +15,9 @@
           %th Создать способ оплаты
       %tbody
         - payment_type_list.each do |payment_type, payments_list|
-          %tr.content-table-group
-            %td= payment_type
+          %tr.even
+            %td
+              %b= payment_type
             %td
             %td
           - payments_list.each do |payment_name, payment_id|
