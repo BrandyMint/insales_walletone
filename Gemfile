@@ -17,7 +17,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 group :development do
   gem 'spring'
   gem 'pry'
-  gem 'capistrano-rails'
   gem 'awesome_print'
   gem 'rubocop'
 end
@@ -32,4 +31,13 @@ group :test do
   gem 'wrong'
   gem 'webmock'
   gem 'simplecov', require: false
+end
+
+group :deploy do
+  gem 'capistrano', '~> 3.1', :require => false
+  gem 'capistrano-rbenv', '~> 2.0',  :require => false
+  gem 'capistrano-rails', '~> 1.1', :require => false
+  gem 'capistrano-bundler', :require => false
+  gem "capistrano-db-tasks", :require => false
+  gem "capistrano-stats"
 end
