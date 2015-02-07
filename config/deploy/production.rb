@@ -1,7 +1,7 @@
 set :application, 'walletone.kiiiosk.ru'
 set :stage, :production
-#set :repo_url, 'https://github.com/eychu/insales_walletone.git'
-set :repo_url, 'https://github.com/saymon21root/insales_walletone.git'
+set :repo_url, 'git@github.com:eychu/insales_walletone.git'
+# set :repo_url, 'https://github.com/saymon21root/insales_walletone.git'
 #ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 set :deploy_to, ->{"/home/insales-walletone/#{fetch(:application)}"}
 server 'walletone.kiiiosk.ru', user: 'insales-walletone', port: 2227, roles: %w{web app db}

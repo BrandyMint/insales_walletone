@@ -8,10 +8,14 @@ class PaysController < ApplicationController
   # walletone doc http://www.walletone.com/ru/merchant/documentation/
   def pay
     @account = Account.find_by(walletone_shop_id: params[:shop_id])
-    wmi_params = calculate_walletone_params(@account, params)
-    walletone_uri = URI(configus.walletone_payment_url)
-    walletone_uri.query = wmi_params.to_query
-    redirect_to(walletone_uri.to_s)
+    if @account
+      wmi_params = calculate_walletone_params(@account, params)
+      walletone_uri = URI(configus.walletone_payment_url)
+      walletone_uri.query = wmi_params.to_query
+      redirect_to(walletone_uri.to_s)
+    else
+      redirect_to configus.redirect_url
+    end
   end
 
   def walletone_result
