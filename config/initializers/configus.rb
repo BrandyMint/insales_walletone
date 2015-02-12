@@ -10,7 +10,7 @@ Configus.build Rails.env do
     payment_url -> { "http://#{host}/pay" }
 
     payment_gateway do
-      title 'Оплата с попощью Единого Кошелька walletone'
+      title 'Оплата с помощью W1 Единая Касса'
       description 'Описание'
     end
   end
