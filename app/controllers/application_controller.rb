@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
         save_session insales_api
         insales_api.configure_api
         @account ||= find_account(insales_api.shop)
+        unless @account.password == insales_api.password
+          reset_session
+          redirect_to request.original_url
+        end
       else
         reset_session
         redirect_to configus.redirect_url
