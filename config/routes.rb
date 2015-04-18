@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  root 'mains#index'
+  root 'main#index'
 
-  post 'pay' => 'pays#pay'
-  post 'fail' => 'pays#fail'
-  post 'success' => 'pays#success'
-  post 'walletone_result' => 'pays#walletone_result'
+  post 'pay' => 'pay#pay'
+  post 'fail' => 'pay#fail'
+  post 'success' => 'pay#success'
 
-  resource :main, only: [] do
+  mount WalletoneMiddleware.new => '/walletone_result'
+
+  namespace :main do
     get :manual
     get :initialize_payment_gateway
     get :new_payment_gateway

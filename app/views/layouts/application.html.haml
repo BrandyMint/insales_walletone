@@ -3,7 +3,7 @@
   %head
     %meta{content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type'}/
     %link{href: '/assets/favicon.ico', rel: 'shortcut icon'}/
-    %title #{configus.app_name}
+    %title= app_name
     = csrf_meta_tags
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -18,7 +18,7 @@
             %p
               = link_to 'Техподдержка', 'mailto:support@walletone.com'
               |
-              #{link_to 'Форум', 'http://forum.insales.ru', target: '_blank'}
+              = link_to 'Форум', 'http://forum.insales.ru', target: '_blank'
         .leftTabs
           .Tab
             .tabLeftCorner
@@ -27,8 +27,9 @@
             .tabRightCorner
           .activeTab
             .tabLeftCorner
-            .tabContent= configus.app_name
+            .tabContent= app_name
             .tabRightCorner
+      
       .submenu
         .submenuItem
           .itemLeftCorner
@@ -36,19 +37,20 @@
           .itemRightCorner
         .submenuItem
           .itemLeftCorner
-          .itemContent= link_to 'Создание видов оплаты', new_payment_gateway_main_path
+          .itemContent= link_to 'Создание видов оплаты', main_new_payment_gateway_path
           .itemRightCorner
         .submenuItem
           .itemLeftCorner
-          .itemContent= link_to 'Инструкция', manual_main_path
+          .itemContent= link_to 'Инструкция', main_manual_path
           .itemRightCorner
+      
       .content
-        -#= flash_messages
         = yield
+
       .footer
         %div
           %p
             &copy;
             = succeed ',' do
-              %span{style: 'color: #752F16; font-weight: bold;'} WalletOne
-            #{Time.now.year}
+              %span{style: 'color: #752F16; font-weight: bold;'}= app_name
+            = Time.now.year

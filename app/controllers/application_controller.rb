@@ -1,63 +1,57 @@
 class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :authenticate
+  before_action :authenticate, :configure_api
 
-  # https://wiki.insales.ru/wiki/%D0%9A%D0%B0%D0%BA_%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F_%D1%81_InSales
+protected
+
   def authenticate
-    token = params[:token]
-    domain = params[:shop]
-    insales_id = params[:insales_id]
+    logout if enter_from_different_shop?
 
-    if insales_api
-      if insales_api.authorized? || token && insales_api.authorize(token)
-        save_session insales_api
-        insales_api.configure_api
-        @account ||= find_account(insales_api.shop)
-        unless @account.password == insales_api.password
-          reset_session
-          redirect_to request.original_url
-        end
-      else
-        reset_session
-        redirect_to configus.redirect_url
-      end
+    if current_app && (current_app.authorized? || current_app.authorize(params[:token]))
+      @account = Account.find_by(domain: current_app.shop)
+      return if @account
+    end
+
+    if account_by_params
+      init_authorization
     else
-      @account ||= find_account(domain, insales_id)
-      unless @account
-        reset_session
-        redirect_to configus.redirect_url
-        return
-      end
-      initialize_api(@account)
+      redirect_to login_path
     end
   end
 
-  def initialize_api(account)
-    insales_api = InsalesApi::App.new(account.domain, account.password)
-    insales_api.configure_api
-
-    authorize_url = insales_api.authorization_url
-    save_session insales_api
-    redirect_to authorize_url
+  def logout
+    reset_session
   end
 
-  def find_account(domain, insales_id = nil)
-    if insales_id
-      Account.find_by(domain: domain, insales_id: insales_id)
+  def configure_api
+    current_app.configure_api
+  end
+
+  def init_authorization
+    session[:app] = WalletoneApp.new(account.domain, account.password)
+
+    redirect_to session[:app].authorization_url
+  end
+
+  def enter_from_different_shop?
+    current_app && !params[:shop].blank? && params[:shop] != current_app.shop
+  end
+
+  def account_by_params
+    @account ||= if params[:insales_id]
+      Account.find_by(insales_id: params[:insales_id])
     else
-      Account.find_by(domain: domain)
+      Account.find_by(domain: params[:shop])
     end
   end
 
-  def insales_api
-    @insales_api ||= load_session
+  def account
+    @account
   end
 
-  def save_session(api)
-    session[:api] = Marshal.dump(api)
-  end
-
-  def load_session
-    Marshal.load(session[:api]) if session[:api]
+  def current_app
+    session[:app]
   end
 end

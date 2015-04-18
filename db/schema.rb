@@ -11,21 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_141_213_231_216) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+ActiveRecord::Schema.define(version: 20141213231216) do
 
-  create_table 'accounts', force: true do |t|
-    t.string 'domain'
-    t.string 'password'
-    t.integer 'insales_id'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
-    t.string 'walletone_shop_id'
-    t.string 'walletone_password'
-    t.integer 'walletone_currency'
-    t.integer 'payment_gateway_id'
+  create_table "accounts", force: true do |t|
+    t.string   "domain"
+    t.string   "password"
+    t.integer  "insales_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "walletone_shop_id"
+    t.string   "walletone_password"
+    t.integer  "walletone_currency"
+    t.integer  "payment_gateway_id"
   end
 
-  add_index 'accounts', ['domain'], name: 'index_accounts_on_domain', unique: true, using: :btree
+  add_index "accounts", ["domain"], name: "index_accounts_on_domain", unique: true
+
 end

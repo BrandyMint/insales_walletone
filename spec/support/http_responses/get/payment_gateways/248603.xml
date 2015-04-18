@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<external>
+  <created-at type="timestamp">2015-04-17 20:20:53 +0300</created-at>
+  <id type="integer">248603</id>
+  <margin type="decimal">0.0</margin>
+  <position type="integer">2</position>
+  <type>PaymentGateway::External</type>
+  <updated-at type="timestamp">2015-04-17 20:20:53 +0300</updated-at>
+  <title>Единый кошелек</title>
+  <description>Описание</description>
+  <password>фывфыв</password>
+  <url>http://walletone.kiiiosk.ru/pay?q=WalletOne</url>
+  <shop-id>123</shop-id>
+  <payment-delivery-variants type="array">
+    <payment-delivery-variant>
+      <account-id type="integer">190822</account-id>
+      <created-at type="timestamp">2015-04-17 20:20:53 +0300</created-at>
+      <delivery-variant-id type="integer">302123</delivery-variant-id>
+      <id type="integer">572515</id>
+      <payment-gateway-id type="integer">248603</payment-gateway-id>
+    </payment-delivery-variant>
+  </payment-delivery-variants>
+  <type>PaymentGateway::External</type>
+</external>

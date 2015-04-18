@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <accepted-at type="timestamp" nil="true"/>
+    <comment/>
+    <created-at type="timestamp">2010-08-16 18:39:58 +0400</created-at>
+    <delivery-variant-id type="integer">58409</delivery-variant-id>
+    <delivered-at type="timestamp">2010-08-19 10:26:16 +0400</delivered-at>
+    <delivery-description>
+        Самовывоз + скидка 2%, тк. до этого делала зказ свыше 2 тысяч
+    </delivery-description>
+    <delivery-price type="decimal">0.0</delivery-price>
+    <financial-status>paid</financial-status>
+    <fulfillment-status>delivered</fulfillment-status>
+    <id type="integer">36289</id>
+    <key>c6a090e74498a8e18d78f2f1424ffa5e</key>
+    <number type="integer">2900</number>
+    <payment-gateway-id type="integer">32541</payment-gateway-id>
+    <payment-description nil="true"/>
+    <payment-title>Наличными</payment-title>
+    <referer/>
+    <updated-at type="timestamp">2010-08-19 10:26:16 +0400</updated-at>
+    <delivery-date type="date">2011-06-02</delivery-date>
+    <delivery-from-hour type="integer">22</delivery-from-hour>
+    <delivery-to-hour type="integer">23</delivery-to-hour>
+    <shipping-address>
+        <address nil="true"/>
+        <city nil="true"/>
+        <country>RU</country>
+        <name nil="true"/>
+        <phone nil="true"/>
+        <state nil="true"/>
+        <zip nil="true"/>
+        <fields-values type="array">
+            <fields_value>
+                <id>58735</id>
+                <type>Выпадающий список</type>
+                <name>Время доставки</name>
+                <value/>
+            </fields_value>
+            <fields_value>
+                <id>58734</id>
+                <type>Российский адрес</type>
+                <name>Адрес по КЛАДР-у</name>
+                <number/>
+                <korp>2</korp>
+                <house>8</house>
+                <flat>307</flat>
+                <manual_index>355000</manual_index>
+                <str/>
+                <adr1>Ставропольский</adr1>
+                <socr1>край</socr1>
+                <adr2/>
+                <socr2/>
+                <adr3>Ставрополь</adr3>
+                <socr3>г</socr3>
+                <adr4/>
+                <socr4/><code>26000001000025900</code>
+                <adr5>М.Морозова</adr5>
+                <socr5>ул</socr5>
+                <address_type>1</address_type>
+                 <index/>
+                <string>г. Ставрополь, ул. М.Морозова</string>
+            </fields_value>
+        </fields-values>
+    </shipping-address>
+    <order-lines type="array">
+        <order-line>
+            <created-at type="timestamp">2010-08-16 18:39:58 +0400</created-at>
+            <id type="integer">94695</id>
+            <quantity type="integer">1</quantity>
+            <sale-price type="decimal">740.0</sale-price>
+            <sku>QP023MVEN-g</sku>
+            <title>Van Gogh Sketchbook Emerald</title>
+            <updated-at type="timestamp">2010-08-16 18:39:58 +0400</updated-at>
+            <variant-id type="integer">16637</variant-id>
+            <weight type="decimal">1.5</weight>
+        </order-line>
+    </order-lines>
+    <discounts type="array">
+        <discount>
+            <created-at type="timestamp">2010-08-19 10:25:51 +0400</created-at>
+            <description>2%</description>
+            <id type="integer">3347</id>
+            <updated-at type="timestamp">2010-08-19 10:25:51 +0400</updated-at>
+            <amount type="integer">15</amount>
+        </discount>
+    </discounts>
+    <client>
+        <client-group-id type="integer" nil="true"/>
+        <fields-values type="array">
+            <fields_value>
+                <id>58749</id>
+                <type>Текстовое поле</type>
+                <name>Дополнительная информация</name>
+                <value/>
+            </fields_value>
+        </fields-values>
+        <created-at type="timestamp">2010-08-16 18:39:58 +0400</created-at>
+        <email nil="true"/>
+        <id type="integer">36854</id>
+        <name>Самовывоз</name>
+        <phone>Самовывоз</phone>
+        <registered type="boolean">false</registered>
+        <subscribe type="boolean">true</subscribe>
+        <updated-at type="timestamp">2010-08-16 18:39:58 +0400</updated-at>
+    </client>
+</order>
