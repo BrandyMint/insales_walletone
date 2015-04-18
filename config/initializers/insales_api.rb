@@ -1,3 +1,3 @@
-InsalesApi::App.api_key            = ENV['INSALES_API_KEY']
-InsalesApi::App.api_secret         = ENV['INSALES_API_SECRET']
-InsalesApi::App.api_host           = ENV['INSALES_API_HOST']
+WalletoneApp.api_key            = Settings.insales.api_key
+WalletoneApp.api_secret         = Settings.insales.api_secret
+WalletoneApp.api_autologin_path = Settings.insales.api_autologin_path

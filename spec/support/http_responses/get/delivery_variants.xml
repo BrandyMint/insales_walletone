@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<delivery-variant-fixeds type="array">
+  <delivery-variant-fixed>
+    <charge-up-to type="decimal" nil="true"/>
+    <created-at type="timestamp">2015-04-17 18:04:52 +0300</created-at>
+    <id type="integer">302123</id>
+    <position type="integer">1</position>
+    <updated-at type="timestamp">2015-04-17 18:04:52 +0300</updated-at>
+    <title>Курьером</title>
+    <description>Доставка курьером в пределах МКАД</description>
+    <payment-delivery-variants type="array">
+      <payment-delivery-variant>
+        <account-id type="integer">190822</account-id>
+        <created-at type="timestamp">2015-04-17 20:20:53 +0300</created-at>
+        <delivery-variant-id type="integer">302123</delivery-variant-id>
+        <id type="integer">572515</id>
+        <payment-gateway-id type="integer">248603</payment-gateway-id>
+      </payment-delivery-variant>
+      <payment-delivery-variant>
+        <account-id type="integer">190822</account-id>
+        <created-at type="timestamp">2015-04-17 18:04:54 +0300</created-at>
+        <delivery-variant-id type="integer">302123</delivery-variant-id>
+        <id type="integer">572467</id>
+        <payment-gateway-id type="integer">248575</payment-gateway-id>
+      </payment-delivery-variant>
+    </payment-delivery-variants>
+    <delivery-locations type="array"/>
+    <type>DeliveryVariant::Fixed</type>
+    <price type="decimal">200.0</price>
+  </delivery-variant-fixed>
+</delivery-variant-fixeds>

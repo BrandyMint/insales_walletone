@@ -1,0 +1,20 @@
+defaults: &defaults
+  redirect_url: http://insales.com
+  app_name: WalletOne
+  insales:
+    api_key: my_key
+    api_secret: my_secret
+    api_autologin_path: session/autologin
+    api_host: localhost:1234
+  payment_gateway:
+    title: Оплата с помощью W1 Единая Касса
+    description: Описание
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

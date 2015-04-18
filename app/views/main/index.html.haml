@@ -1,0 +1,17 @@
+%h2{style: 'padding-left:20px'} Настройка
+.helper
+  Необходимо внести данные Кассы на
+  = link_to 'Walletone.com', 'http://walletone.com'
+
+= render 'shared/account/form'
+
+- if payment_gateway_inside_insales?(@account)
+  .helper
+    Текущий шлюз для оплаты через Walletone:
+    = link_to get_payment_gateway_title(@account.payment_gateway_id), insales_payment_gateway_url(@account), target: '_blank'
+- else
+  .helper
+    Необходимо создать
+    = link_to 'вид оплаты', insales_payment_gateways_url(@account)
+    с настройками представлеными выше
+    = button_to 'Создать вид оплаты', main_initialize_payment_gateway_path, method: :get

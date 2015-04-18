@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<payment-gateway>
+    <!-- I don't have response example -->
+    <!-- So I just create one field with ID -->
+    <id>123</id>
+</payment-gateway>
