@@ -1,4 +1,4 @@
-class CreatePay < BaseService
+class CreatePayment < BaseService
   include UrlHelper
   attr_reader :location
 

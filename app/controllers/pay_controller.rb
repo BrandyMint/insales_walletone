@@ -5,7 +5,7 @@ class PayController < ApplicationController
   def pay
     account = Account.find_by(walletone_shop_id: params[:shop_id])
     form    = PayForm.new(params)
-    result  = CreatePay.new(account, form).call
+    result  = CreatePayment.new(account, form).call
 
     if result.success?
       redirect_to result.location
