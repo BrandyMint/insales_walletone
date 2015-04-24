@@ -7,11 +7,9 @@ class PayController < ApplicationController
     form    = PaymentForm.new(params)
     result  = CreatePayment.new(account, form).call
 
-    if result.success?
-      redirect_to result.location
-    else
-      redirect_to Settings.redirect_url
-    end
+    redirect_to result.location
+  rescue
+    redirect_to Settings.redirect_url
   end
 
   def success

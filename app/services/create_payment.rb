@@ -10,7 +10,7 @@ class CreatePayment < BaseService
   def action
     Walletone::Payment.encode_description = true
 
-    return false unless @account
+    raise AccountNotFoundError unless @account
 
     # ...
 
