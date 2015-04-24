@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213231216) do
+ActiveRecord::Schema.define(version: 20150423082638) do
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string   "domain"
     t.string   "password"
     t.integer  "insales_id"
@@ -26,5 +26,20 @@ ActiveRecord::Schema.define(version: 20141213231216) do
   end
 
   add_index "accounts", ["domain"], name: "index_accounts_on_domain", unique: true
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "shop_id",        null: false
+    t.float    "amount",         null: false
+    t.integer  "transaction_id", null: false
+    t.text     "description"
+    t.string   "key",            null: false
+    t.integer  "order_id",       null: false
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "payments", ["transaction_id"], name: "index_payments_on_transaction_id", unique: true
 
 end
