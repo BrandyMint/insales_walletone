@@ -1,5 +1,6 @@
 describe 'POST /walletone_result', type: :request do
-  let(:merchant_id) { 123456 }
+  let(:merchant_id)    { 123456 }
+  let(:transaction_id) { 2192673 }
   let!(:account) do
     Fabricate(:account, walletone_shop_id: merchant_id,
       walletone_password: 'passwd')
@@ -20,7 +21,7 @@ describe 'POST /walletone_result', type: :request do
       'WMI_ORDER_ID'          => '346936430734',
       'WMI_ORDER_STATE'       => 'Accepted',
       'WMI_PAYMENT_AMOUNT'    => '0.10',
-      'WMI_PAYMENT_NO'        => '2192673',
+      'WMI_PAYMENT_NO'        => transaction_id,
       'WMI_PAYMENT_TYPE'      => 'SberOnlineRUB',
       'WMI_SUCCESS_URL'       => 'http://test.myinsales.ru/orders/bf3f5e24d40e5f7caa5fa9d64070b5e3',
       'WMI_UPDATE_DATE'       => '2014-12-16 19:43:03',
@@ -29,6 +30,8 @@ describe 'POST /walletone_result', type: :request do
   end
 
   context 'when server busy' do
+    let!(:payment) { Fabricate(:payment, transaction_id: transaction_id) }
+
     before do
       stub_request(:post, "http://#{account.domain}/payments/external/#{account.payment_gateway_id}/success")
         .to_return(status: 500, body: '', headers: {})
@@ -40,16 +43,29 @@ describe 'POST /walletone_result', type: :request do
     it { expect(response.body).to include('WMI_DESCRIPTION=server busy') }
   end
 
+  context 'when payment does not created' do
+    it 'error with undefined payment' do
+      post '/walletone_result', valid_params
+
+      expect(response.body).to include('WMI_RESULT=RETRY')
+      expect(response.body).to include('WMI_DESCRIPTION=undefined payment')
+    end
+  end
+
   context 'when server works' do
+    let!(:payment) { Fabricate(:payment, transaction_id: transaction_id) }
+
     before do
       stub_request(:post, "http://#{account.domain}/payments/external/#{account.payment_gateway_id}/success")
         .to_return(status: 200, body: '', headers: {})
     end
 
-    it 'accepts with valid params' do
+    it 'accepts with valid params and updates payment status' do
       post '/walletone_result', valid_params
+      payment = Payment.find_by(transaction_id: transaction_id)
 
       expect(response.body).to include('WMI_RESULT=OK')
+      expect(payment.status).to eq('paid')
     end
 
     it 'error with wrong sign' do

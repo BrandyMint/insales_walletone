@@ -3,6 +3,11 @@ class WalletoneMiddleware < Walletone::Middleware::Base
 
   def perform(notify, env)
     account = Account.find_by(walletone_shop_id: notify[:WMI_MERCHANT_ID])
+    payment = Payment.find_by(transaction_id: notify[:WMI_PAYMENT_NO])
+
+    unless payment
+      raise 'undefined payment'
+    end
 
     unless notify.valid?(account.walletone_password)
       raise 'invalid signature'
@@ -12,6 +17,7 @@ class WalletoneMiddleware < Walletone::Middleware::Base
       raise 'invalid state'
     end
 
+    payment.update_attribute(:status, 'paid')
     insales_params = calculate_insales_params(account, notify)
     response = HTTParty.post(insales_result_url(account, :success), body: insales_params)
 

@@ -56,6 +56,12 @@ describe PayController, type: :controller do
         expect(payment).to be
         expect(payment.transaction_id).to eq(transaction_id)
       end
+
+      it 'payment default status should be created' do
+        payment = Payment.find_by(transaction_id: transaction_id)
+
+        expect(payment.status).to eq('created')
+      end
     end
 
     it 'with unexist account' do

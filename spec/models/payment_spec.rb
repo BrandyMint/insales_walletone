@@ -1,3 +1,5 @@
 describe Payment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Fabricate(:payment) }
+
+  it { expect(subject.status).to eq('created') }
 end
