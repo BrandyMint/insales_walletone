@@ -10,6 +10,7 @@ gem 'walletone',     '~> 0.1.2'
 gem 'settingslogic', '~> 2.0.9'
 gem 'httparty',      '~> 0.13.3'
 gem 'virtus',        '~> 1.0.5'
+gem 'russian'
 
 # assets
 gem 'sass-rails',  '~> 5.0'

@@ -9,6 +9,9 @@ defaults: &defaults
   payment_gateway:
     title: Оплата с помощью W1 Единая Касса
     description: Описание
+  auth:
+    login: admin
+    password: strong_password
 
 development:
   <<: *defaults

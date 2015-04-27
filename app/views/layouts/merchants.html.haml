@@ -1,0 +1,43 @@
+!!!
+%html{xmlns: 'http://www.w3.org/1999/xhtml'}
+  %head
+    %meta{content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type'}/
+    %link{href: '/assets/favicon.ico', rel: 'shortcut icon'}/
+    %title= app_name
+    = csrf_meta_tags
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag    'application', media: 'all'
+
+  %body
+    .containerPage
+      .head
+        .headTop
+          .leftHead
+            %h1 Список подключенных магазинов
+          .rightHead
+            %p
+              = link_to 'Техподдержка', 'mailto:support@walletone.com'
+              |
+              = link_to 'Форум', 'http://forum.insales.ru', target: '_blank'
+        .leftTabs
+          .activeTab
+            .tabLeftCorner
+            .tabContent= app_name
+            .tabRightCorner
+      
+      .submenu
+        .submenuItem
+          .itemLeftCorner
+          .itemContent= link_to 'Весь список', merchants_path
+          .itemRightCorner
+      
+      .content
+        = yield
+
+      .footer
+        %div
+          %p
+            &copy;
+            = succeed ',' do
+              %span{style: 'color: #752F16; font-weight: bold;'}= app_name
+            = Time.now.year

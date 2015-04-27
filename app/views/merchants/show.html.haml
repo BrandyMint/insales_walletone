@@ -1,0 +1,47 @@
+%h1= @account.domain
+
+%ul
+  %li
+    Insales ID:
+    %b= @account.insales_id
+  %li
+    Walletone Merchant ID:
+    %b= @account.walletone_shop_id
+  %li
+    Walletone Currency:
+    %b= @account.walletone_currency
+  %li
+    Payment Gateway ID:
+    %b= @account.payment_gateway_id
+
+%h2 Список операций
+
+- if @payments.size == 0
+  Список пуст
+- else
+  .content-table
+    %table.items
+      %thead
+        %tr
+          %th Транзакция
+          %th Заказ
+          %th Описание
+          %th Телефон
+          %th Почта
+          %th Создан
+          %th Обновлен
+          %th Статус
+          %th Сумма
+
+        %tbody
+          - @payments.each do |payment|
+            %tr.even
+              %td= payment.transaction_id
+              %td= payment.order_id
+              %td= payment.description
+              %td= payment.phone
+              %td= payment.email
+              %td= l payment.created_at, format: :long
+              %td= l payment.updated_at, format: :long
+              %td= payment.status
+              %td= number_to_currency payment.amount

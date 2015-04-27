@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     get :install
     get :uninstall
   end
+
+  resources :merchants, only: [:index, :show]
 end
