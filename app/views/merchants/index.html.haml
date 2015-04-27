@@ -1,0 +1,22 @@
+.content-table
+  %table.items
+    %thead
+      %tr
+        %th Адрес
+        %th Insales ID
+        %th Walletone Merchant ID
+        %th Walletone Currency
+        %th Payment Gateway ID
+        %th
+      
+      %tbody
+        - @accounts.each do |account|
+          %tr.even
+            %td
+              %b= account.domain
+            %td= account.insales_id
+            %td= account.walletone_shop_id
+            %td= account.walletone_currency
+            %td= account.payment_gateway_id
+            %td
+              = link_to 'Подробнее', merchant_path(account.id)

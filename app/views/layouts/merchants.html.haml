@@ -13,18 +13,13 @@
       .head
         .headTop
           .leftHead
-            %h1 Настройка платежного модуля "W1 Единая Касса"
+            %h1 Список подключенных магазинов
           .rightHead
             %p
               = link_to 'Техподдержка', 'mailto:support@walletone.com'
               |
               = link_to 'Форум', 'http://forum.insales.ru', target: '_blank'
         .leftTabs
-          .Tab
-            .tabLeftCorner
-            .tabContent
-              = link_to image_tag('home_inactive_icon.png', title: 'Вернуться в бек-офис', alt: 'Вернуться в бек-офис'), admin_panel_url(@account)
-            .tabRightCorner
           .activeTab
             .tabLeftCorner
             .tabContent= app_name
@@ -33,15 +28,7 @@
       .submenu
         .submenuItem
           .itemLeftCorner
-          .itemContent= link_to 'Настройка', root_path
-          .itemRightCorner
-        .submenuItem
-          .itemLeftCorner
-          .itemContent= link_to 'Создание видов оплаты', main_new_payment_gateway_path
-          .itemRightCorner
-        .submenuItem
-          .itemLeftCorner
-          .itemContent= link_to 'Инструкция', main_manual_path
+          .itemContent= link_to 'Весь список', merchants_path
           .itemRightCorner
       
       .content

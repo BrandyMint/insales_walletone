@@ -13,6 +13,7 @@ module W1InsalesApp
       Rails.root.join('app/services')
     ]
 
+    config.i18n.default_locale = :ru
     config.time_zone = 'Moscow'
 
     config.generators do |g|
