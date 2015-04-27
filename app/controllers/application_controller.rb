@@ -17,7 +17,7 @@ protected
     if account_by_params
       init_authorization
     else
-      redirect_to login_path
+      redirect_to Settings.redirect_url
     end
   end
 
