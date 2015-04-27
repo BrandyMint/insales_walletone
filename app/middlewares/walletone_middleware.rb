@@ -17,7 +17,7 @@ class WalletoneMiddleware < Walletone::Middleware::Base
       raise 'invalid state'
     end
 
-    payment.update_attribute(:status, 'paid')
+    payment.update_attribute!(:status, 'paid')
     insales_params = calculate_insales_params(account, notify)
     response = HTTParty.post(insales_result_url(account, :success), body: insales_params)
 
