@@ -76,7 +76,7 @@ h3 input, h3 textarea {font-weight:bold; font-size:140%}
 .reflang {color: gray; font-size: 90%; margin-left: 0.5em;}
 
 /* page layout */
-.head {background-color: #252525; background-image: url(asset_path('head_bgrnd.gif', image)); background-repeat: repeat-x; height: 77px;}
+.head {background-color: #252525; background-image: url(asset-path('head_bgrnd.gif')); background-repeat: repeat-x; height: 77px;}
 .head a {color: #7eb6a5; text-decoration: underline;}
 .head a:visited {color: #7eb6a5; text-decoration: underline;}
 .head a:hover 	{text-decoration: none;}
@@ -99,30 +99,30 @@ h3 input, h3 textarea {font-weight:bold; font-size:140%}
 .Tab .tabContent a {color: #FFF; text-decoration: none;}
 .Tab div, .activeTab div {float: left; height: 30px;}
 
-.Tab .tabLeftCorner {background: url(asset_path('tab_inactive_left.png', image));}
-.Tab .tabRightCorner {background: url(asset_path('tab_inactive_right.png', image));}
-.Tab .tabContent { margin-top: 0px; background: url(asset_path('tab_inactive_center.png', image)) 0 -1px; height: 17px; }
+.Tab .tabLeftCorner {background: url(asset-path('tab_inactive_left.png'));}
+.Tab .tabRightCorner {background: url(asset-path('tab_inactive_right.png'));}
+.Tab .tabContent { margin-top: 0px; background: url(asset-path('tab_inactive_center.png')) 0 -1px; height: 17px; }
 
-.activeTab .tabLeftCorner {background: url(asset_path('tab_active_left.png', image));}
-.activeTab .tabRightCorner {background: url(asset_path('tab_active_right.png', image));}
-.activeTab .tabContent {margin-top: 0px; padding: 6px; background-color: #FFFFFF; background: url(asset_path('tab_active_center.png', image)) 0 -1px; color: #313131; height: 17px; border-top: solid 1px #E8E8E8;}
+.activeTab .tabLeftCorner {background: url(asset-path('tab_active_left.png'));}
+.activeTab .tabRightCorner {background: url(asset-path('tab_active_right.png'));}
+.activeTab .tabContent {margin-top: 0px; padding: 6px; background-color: #FFFFFF; background: url(asset-path('tab_active_center.png')) 0 -1px; color: #313131; height: 17px; border-top: solid 1px #E8E8E8;}
 .activeTab .tabContent a {color: #1A1A1A; text-decoration: none;}
 .activeTab .tabContent a:visited {color: #1A1A1A;}
 
-.submenu {height: 22px; font-size: 12px; background: url(asset_path('submenu_bgrnd.gif', image)); padding: 11px 0px 0px 15px;}
+.submenu {height: 22px; font-size: 12px; background: url(asset-path('submenu_bgrnd.gif')); padding: 11px 0px 0px 15px;}
 .submenu .currentSubmenuItem, .submenu .submenuItem {margin-right: 15px;}
 .submenu a {color: #575757; text-decoration: none;}
 .submenu a:visited            {color: #575757; }
 .submenu .currentSubmenuItem, .submenu .submenuItem {margin-top: -7px; color: #707070;}
 .submenu div					        {float: left; height: 25px;}
 
-.submenu .submenuItem .itemLeftCorner  {background: url(asset_path('submenu_box_inactive_left.gif', image)); width: 4px;}
-.submenu .submenuItem .itemRightCorner {background: url(asset_path('submenu_box_inactive_right.gif', image)); width: 4px;}
-.submenu .submenuItem .itemContent	{padding: 4px 5px 0px 5px; background: url(asset_path('submenu_box_inactive_center.gif', image)); background-color: #DCDCDC; border-top: solid 1px #CDCDCD; border-bottom: solid 1px #CDCDCD; height: 19px;}
+.submenu .submenuItem .itemLeftCorner  {background: url(asset-path('submenu_box_inactive_left.gif')); width: 4px;}
+.submenu .submenuItem .itemRightCorner {background: url(asset-path('submenu_box_inactive_right.gif')); width: 4px;}
+.submenu .submenuItem .itemContent	{padding: 4px 5px 0px 5px; background: url(asset-path('submenu_box_inactive_center.gif')); background-color: #DCDCDC; border-top: solid 1px #CDCDCD; border-bottom: solid 1px #CDCDCD; height: 19px;}
 
-.submenu .currentSubmenuItem .itemLeftCorner  {background: url(asset_path('submenu_box_active_left.gif', image)); width: 4px;}
-.submenu .currentSubmenuItem .itemRightCorner {background: url(asset_path('submenu_box_active_right.gif', image)); width: 4px;}
-.submenu .currentSubmenuItem .itemContent	{padding: 4px 5px 0px 5px; background: url(asset_path('submenu_box_active_center.gif', image)); background-color: #FFFFFF; border-top: solid 1px #FEFEFE; border-bottom: solid 1px #DFDFDF; height: 19px; color: #4D4D4D; }
+.submenu .currentSubmenuItem .itemLeftCorner  {background: url(asset-path('submenu_box_active_left.gif')); width: 4px;}
+.submenu .currentSubmenuItem .itemRightCorner {background: url(asset-path('submenu_box_active_right.gif')); width: 4px;}
+.submenu .currentSubmenuItem .itemContent	{padding: 4px 5px 0px 5px; background: url(asset-path('submenu_box_active_center.gif')); background-color: #FFFFFF; border-top: solid 1px #FEFEFE; border-bottom: solid 1px #DFDFDF; height: 19px; color: #4D4D4D; }
 
 .content {padding: 10px 20px 0px 20px; font-size: 85%; }
 .content h1 {font-size: 180%;}
@@ -155,7 +155,7 @@ h3 input, h3 textarea {font-weight:bold; font-size:140%}
 th, td {vertical-align: top;}
 table.items {border-spacing: 0px; border-collapse: collapse; font-size: 85%;}
 table.items th, table.items td {border: solid 1px #E4E4E4}
-table.items th {height: 30px; padding-left: 0.7em; background-color: #DEDEDE; background-image: url(asset_path('table_items_th_bgrnd.gif', image)); background-repeat: repeat-x; font-size: 100%; text-align: left; vertical-align: middle; padding: 0.3em 0.5em 0.3em 0.5em; font-weight: normal}
+table.items th {height: 30px; padding-left: 0.7em; background-color: #DEDEDE; background-image: url(asset-path('table_items_th_bgrnd.gif')); background-repeat: repeat-x; font-size: 100%; text-align: left; vertical-align: middle; padding: 0.3em 0.5em 0.3em 0.5em; font-weight: normal}
 table.items th .warning {color: #e85e5e;}
 table.items th.all_selecter { text-align: center; }
 table.items td {padding: 0.7em; margin: 3px;}
@@ -176,7 +176,7 @@ table.items tr.search_row td .search_container .search_input{border:0px solid gr
 table.items tr.search_row td .search_container .search_button{margin-right:0;}
 table.items .onSite {font-size:80%; color:#776;}
 table.items td.associated {font-size: 70%; font-style:italic}
-table.items tr.withRow td {padding: 5px 0.7em; background-color: #E8EEE0; background-image: url(asset_path('table_items_withRow_bgrnd.gif', image)); background-repeat: repeat-x; height: 20px; vertical-align: middle}
+table.items tr.withRow td {padding: 5px 0.7em; background-color: #E8EEE0; background-image: url(asset-path('table_items_withRow_bgrnd.gif')); background-repeat: repeat-x; height: 20px; vertical-align: middle}
 table.items tr.withRow td td { padding: 0; background: transparent; border: none; vertical-align:top }
 table.items .selected td {background: #ffffcc !important;}
 table.items td.transparent {background: transparent;}
@@ -190,7 +190,7 @@ table.items td.quantity {text-align: right;}
 td.quantity {width: 86px;}
 td.quantity input{text-align: right; width:80px;}
 table.items tr.delivery td {background-color: #FFF;}
-table.items tr.bottom_row {background:url(asset_path('table_bottom_bg.png', image)) repeat-x;}
+table.items tr.bottom_row {background:url(asset-path('table_bottom_bg.png')) repeat-x;}
 table.items tr.sum td {border-top-width: 3px; border-bottom-width: 3px; font-weight: bold;}
 
 .itemsSearchOptions { margin: 2em 0px 1em 0px; font-size: 85%; height: 3em;}
@@ -202,8 +202,8 @@ table.items tr.sum td {border-top-width: 3px; border-bottom-width: 3px; font-wei
 .buttons{height:30px; margin:15px 0; background-color:#f5f5f5; position:relative}
 .buttons_center {margin:0 5px;}
 span.buttons_left, span.buttons_right {display:block;position:absolute; width:4px; height:30px;}
-span.buttons_left {left:0; top:0; background:url(asset_path('left_corner_buttons.png', image));}
-span.buttons_right {right:0; top:0; background:url(asset_path('right_corner_buttons.png', image));}
+span.buttons_left {left:0; top:0; background:url(asset-path('left_corner_buttons.png'));}
+span.buttons_right {right:0; top:0; background:url(asset-path('right_corner_buttons.png'));}
 .buttons .itemsSearchOptions {float:right; margin:0px !important; height:auto !important; line-height:30px; width:340px; overflow:hidden}
 .buttons .items_buttons {float:left; line-height:30px; width:350px; font-size:85%}
 
@@ -246,16 +246,16 @@ table.form td { border-top-width: 0px; border-right-width: 0px; border-bottom-wi
 }
 input.small {width: 15ex}
 
-.footer {background: url(asset_path('footer_bgrnd.gif', image)); font-size: 11px;}
+.footer {background: url(asset-path('footer_bgrnd.gif')); font-size: 11px;}
 .footer div {margin: 90px 0px 0px 30px;}
 .footer p		{margin: 5px 0px 0px 0px;}
 .footer img {margin-bottom: -7px; margin-right: 10px;}
 
 /* Errors & Messages */
-.success {padding:20px 10px 20px 40px;border:2px solid;background:url(asset_path('success.png', image)) no-repeat 10px 20px #c5fca3;border-color:#62cf21;}
-.notice {padding:20px 10px 20px 40px;border:2px solid;background:url(asset_path('success.png', image)) no-repeat 10px 20px #c5fca3;border-color:#62cf21;}
+.success {padding:20px 10px 20px 40px;border:2px solid;background:url(asset-path('success.png')) no-repeat 10px 20px #c5fca3;border-color:#62cf21;}
+.notice {padding:20px 10px 20px 40px;border:2px solid;background:url(asset-path('success.png')) no-repeat 10px 20px #c5fca3;border-color:#62cf21;}
 /* TODO: change notice image */
-.error {border:solid 2px #f26666;background: url(asset_path('error.png', image)) no-repeat 10px 20px #ffdbdb;font-size:85%;padding:20px 10px 20px 40px;margin:10px 0px 10px 0px;}
+.error {border:solid 2px #f26666;background: url(asset-path('error.png')) no-repeat 10px 20px #ffdbdb;font-size:85%;padding:20px 10px 20px 40px;margin:10px 0px 10px 0px;}
 .server_message .error {margin:-10px 5px 5px;}
 
 .message .success, .message .error, .message .notice{padding:20px 10px 20px 40px;margin:0px}
@@ -264,7 +264,7 @@ input.small {width: 15ex}
 .fieldWithErrors {display: inline;}
 .fieldWithErrorsHighlighted { background-color: #ffe2e2; }
 
-.helper {padding: 15px; background: url(asset_path('helper_bgrnd.png', image)) repeat-x; background-color: #FDF4E2; border: 1px solid #E8D9C4; margin: 1em 0; width: 600px; font-size: 85%;}
+.helper {padding: 15px; background: url(asset-path('helper_bgrnd.png')) repeat-x; background-color: #FDF4E2; border: 1px solid #E8D9C4; margin: 1em 0; width: 600px; font-size: 85%;}
 .helper h3 {color:#3B3B3B; font-size:110%; font-weight:bold; margin-bottom:10px;}
 .helper .close {}
 .helper img {margin-bottom: -5px; margin-right: 10px;}
@@ -272,7 +272,7 @@ input.small {width: 15ex}
 .helper a { color: #A2321E; text-decoration: underline;}
 .helper ul {margin-top: 0.5em}
 .helper ul li {list-style: disc; margin-left: 3em}
-.notice {padding: 20px 10px 20px 40px; border:2px solid; background: url(asset_path('success.png', image)) no-repeat 10px 20px #c5fca3; border-color: #62cf21;}
+.notice {padding: 20px 10px 20px 40px; border:2px solid; background: url(asset-path('success.png')) no-repeat 10px 20px #c5fca3; border-color: #62cf21;}
 
 
 
@@ -307,14 +307,14 @@ td.sku {width:80px}
 /* Orders */
 .dataContainer {padding: 15px; margin-bottom: 10px; border: solid 1px #DDDDDD; font-size: 100%;}
 #order .new, #order .new .loader, #order .new .saver, #order .new .empty {display: none;}
-table.items tr.ordersAction td {background-color: #E8EEE0; background-image: url(asset_path('table_items_withRow_bgrnd.gif', image)); background-repeat: repeat-x; height: 35px; vertical-align: middle;}
+table.items tr.ordersAction td {background-color: #E8EEE0; background-image: url(asset-path('table_items_withRow_bgrnd.gif')); background-repeat: repeat-x; height: 35px; vertical-align: middle;}
 table.items tr.ordersAction img.ico, .clientCardActions img.ico, .orderCardActions img.ico, .ordersActions img.ico, #orders_container img.ico {margin: 0px 3px -4px 0px;}
 table.items tr.ordersAction div {padding-top: 3px;}
 #orders_container th.lineType {padding: 0px; text-align: center; width: 14px;}
 #orders_container th.lineType img {margin: 0px;}
 #orders_container td.lineType {background-repeat: repeat-y; width: 14px; padding: 0px;}
-#orders_container tr.red td.lineType {background-color: #AF2C2C; background-image: url(asset_path('red_line.gif', image));}
-#orders_container tr.green td.lineType {background-color: #42A90A; background-image: url(asset_path('green_line.gif', image));}
+#orders_container tr.red td.lineType {background-color: #AF2C2C; background-image: url(asset-path('red_line.gif'));}
+#orders_container tr.green td.lineType {background-color: #42A90A; background-image: url(asset-path('green_line.gif'));}
 #order_delivery_variant_id {width:220px}
 #delivery_selection {display:none}
 
