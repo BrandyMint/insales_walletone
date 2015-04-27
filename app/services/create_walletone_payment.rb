@@ -1,4 +1,4 @@
-class CreatePayment < BaseService
+class CreateWalletonePayment < BaseService
   include UrlHelper
   attr_reader :location
 
@@ -11,8 +11,6 @@ class CreatePayment < BaseService
     Walletone::Payment.encode_description = true
 
     raise AccountNotFoundError unless @account
-
-    Payment.create(@form.to_h)
 
     payment = create_payment
     payment.sign!(@account.walletone_password, :md5)
