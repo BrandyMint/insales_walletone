@@ -1,4 +1,4 @@
-class CreatePay < BaseService
+class CreatePayment < BaseService
   include UrlHelper
   attr_reader :location
 
@@ -10,7 +10,9 @@ class CreatePay < BaseService
   def action
     Walletone::Payment.encode_description = true
 
-    return false unless @account
+    raise AccountNotFoundError unless @account
+
+    Payment.create(@form.to_h)
 
     payment = create_payment
     payment.sign!(@account.walletone_password, :md5)
@@ -28,7 +30,7 @@ protected
 
   def create_payment
     Walletone::Payment.new({
-      WMI_MERCHANT_ID:     127830694690,
+      WMI_MERCHANT_ID:     @account.walletone_shop_id,
       WMI_PAYMENT_AMOUNT:  @form.amount,
       WMI_CURRENCY_ID:     @account.walletone_currency,
       WMI_PAYMENT_NO:      @form.transaction_id,

@@ -1,4 +1,4 @@
-class PayForm < BaseForm
+class PaymentForm < BaseForm
   # https://wiki.insales.ru/wiki/Подключение_внешнего_способа_оплаты_(для_разработчиков_интеграций)
 
   attribute :shop_id
