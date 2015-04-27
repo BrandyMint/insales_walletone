@@ -1,22 +1,22 @@
-%h1= @account.domain
+%h1= account.domain
 
 %ul
   %li
     Insales ID:
-    %b= @account.insales_id
+    %b= account.insales_id
   %li
     Walletone Merchant ID:
-    %b= @account.walletone_shop_id
+    %b= account.walletone_shop_id
   %li
     Walletone Currency:
-    %b= @account.walletone_currency
+    %b= account.walletone_currency
   %li
     Payment Gateway ID:
-    %b= @account.payment_gateway_id
+    %b= account.payment_gateway_id
 
 %h2 Список операций
 
-- if @payments.size == 0
+- if payments.size == 0
   Список пуст
 - else
   .content-table
@@ -34,7 +34,7 @@
           %th Сумма
 
         %tbody
-          - @payments.each do |payment|
+          - payments.each do |payment|
             %tr.even
               %td= payment.transaction_id
               %td= payment.order_id
