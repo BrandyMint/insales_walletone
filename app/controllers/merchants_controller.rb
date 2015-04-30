@@ -4,12 +4,16 @@ class MerchantsController < ApplicationController
   layout 'merchants'
 
   def index
-    @accounts = Account.all
+    accounts = Account.all.order(:id)
+
+    render locals: { accounts: accounts }
   end
 
   def show
-    @account = Account.find(params[:id])
-    @payments = @account.payments
+    account  = Account.find(params[:id])
+    payments = account.payments
+
+    render locals: { account: account, payments: payments }
   end
 
 private

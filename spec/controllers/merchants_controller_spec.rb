@@ -13,7 +13,6 @@ describe MerchantsController, type: :controller do
       get :index
 
       expect(response).to have_http_status(:success)
-      expect(assigns(:accounts)).to be
     end
   end
 
@@ -31,8 +30,6 @@ describe MerchantsController, type: :controller do
       get :show, id: account.id
 
       expect(response).to have_http_status(:success)
-      expect(assigns(:account)).to be_an(Account)
-      expect(assigns(:payments)).to be
     end
   end
 end
