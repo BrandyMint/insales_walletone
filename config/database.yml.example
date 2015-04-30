@@ -16,3 +16,7 @@ production:
   database: W1InsalesApp_production
   username: W1InsalesApp
   password: <%= ENV['W1INSALESAPP_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: W1InsalesApp_staging
