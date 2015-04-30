@@ -252,7 +252,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capistrano (~> 3.1)
+  capistrano (~> 3.4.0)
   capistrano-bundler
   capistrano-db-tasks
   capistrano-rails (~> 1.1)

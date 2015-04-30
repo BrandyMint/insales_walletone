@@ -1,4 +1,4 @@
-lock '3.3.4'
+lock '3.4.0'
 
 require 'capistrano-db-tasks'
 set :scm, :git
