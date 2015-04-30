@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',   '4.2.1'
-gem 'pg',      '~> 0.18.1'
-gem 'sqlite3', '~> 1.3.10'
+gem 'rails', '4.2.1'
 
 # core
 gem 'insales_api',   '~> 0.0.13'
@@ -19,6 +17,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 
 group :development do
+  gem 'sqlite3', '~> 1.3.10'
+
   gem 'spring'
   gem 'spring-commands-rspec'
 
@@ -30,6 +30,8 @@ group :development do
 end
 
 group :production do
+  gem 'pg', '~> 0.18.1'
+
   gem 'rails_12factor'
   gem 'unicorn'
 end
