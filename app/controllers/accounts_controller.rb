@@ -1,9 +1,11 @@
 class AccountsController < ApplicationController
   skip_before_action :authenticate, except: [:update]
-  skip_before_action :configure_api, except: [:autologin]
+  skip_before_action :configure_api
 
   def autologin
-    if current_app && auth_token == params[:token]
+    current_app.store_auth_token
+    
+    if current_app && current_app.authorize(params[:token])
       redirect_to location || root_path
     else
       redirect_to Settings.redirect_url
@@ -31,10 +33,6 @@ class AccountsController < ApplicationController
   end
 
 private
-
-  def auth_token
-    InsalesApi::Password.create(current_app.password, current_app.salt)
-  end
 
   def account_params
     params.require(:account).permit(:payment_gateway_id,
