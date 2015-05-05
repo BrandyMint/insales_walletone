@@ -10,7 +10,7 @@ protected
     logout if enter_from_different_shop?
 
     if current_app && (current_app.authorized? || current_app.authorize(params[:token]))
-      @account = Account.find_by(domain: current_app.shop)
+      @account = Account.find_by(domain: current_app.domain)
       return if @account
     end
 
@@ -42,7 +42,7 @@ protected
   end
 
   def enter_from_different_shop?
-    current_app && !params[:shop].blank? && params[:shop] != current_app.shop
+    current_app && !params[:shop].blank? && params[:shop] != current_app.domain
   end
 
   def account_by_params
