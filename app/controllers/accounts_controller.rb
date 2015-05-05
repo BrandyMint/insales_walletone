@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   skip_before_action :authenticate, except: [:update]
-  skip_before_action :configure_api
+  skip_before_action :configure_api, except: [:autologin]
 
   def autologin
     if current_app && current_app.authorize(params[:token])
