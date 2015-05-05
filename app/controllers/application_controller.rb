@@ -30,10 +30,9 @@ protected
   end
 
   def init_authorization
-    app = WalletoneApp.new(account.domain, account.password)
-    save_app(app)
+    session[:app] = WalletoneApp.new(account.domain, account.password)
 
-    redirect_to current_app.authorization_url
+    redirect_to session[:app].authorization_url
   end
 
   def enter_from_different_shop?
@@ -53,10 +52,6 @@ protected
   end
 
   def current_app
-    Marshal.load(session[:app]) if session[:app]
-  end
-
-  def save_app(app)
-    session[:app] = Marshal.dump(app)
+    session[:app]
   end
 end
