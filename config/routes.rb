@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resource :accounts, only: :update do
+    get :autologin
     get :install
     get :uninstall
   end

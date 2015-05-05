@@ -9,10 +9,12 @@ protected
   def authenticate
     logout if enter_from_different_shop?
 
-    if current_app && (current_app.authorized? || current_app.authorize(params[:token]))
+    if current_app && current_app.authorized?
       @account = Account.find_by(domain: current_app.shop)
       return if @account
     end
+
+    store_location
 
     if account_by_params
       init_authorization
@@ -33,6 +35,10 @@ protected
     session[:app] = WalletoneApp.new(account.domain, account.password)
 
     redirect_to session[:app].authorization_url
+  end
+
+  def store_location(path = nil)
+    session[:return_to] = path || request.fullpath
   end
 
   def enter_from_different_shop?

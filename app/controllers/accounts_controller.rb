@@ -2,6 +2,14 @@ class AccountsController < ApplicationController
   skip_before_action :authenticate, except: [:update]
   skip_before_action :configure_api
 
+  def autologin
+    if current_app && current_app.authorize(params[:token])
+      redirect_to location || root_path
+    else
+      redirect_to Settings.redirect_url
+    end
+  end
+
   def install
     status = WalletoneApp.install(params[:shop],
       params[:token], params[:insales_id])

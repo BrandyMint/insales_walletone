@@ -4,7 +4,7 @@ defaults: &defaults
   insales:
     api_key: my_key
     api_secret: my_secret
-    api_autologin_path: session/autologin
+    api_autologin_path: accounts/autologin
     api_host: localhost:1234
   payment_gateway:
     title: Оплата с помощью W1 Единая Касса
