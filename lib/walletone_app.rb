@@ -1,7 +1,7 @@
 class WalletoneApp < InsalesApi::App
   class << self
     def install(shop, token, insales_id)
-      domain = self.prepare_domain(shop)
+      domain = self.prepare_shop(shop)
 
       if Account.find_by(domain: domain)
         return true
@@ -13,7 +13,7 @@ class WalletoneApp < InsalesApi::App
     end
 
     def uninstall(shop, password)
-      domain = self.prepare_domain(shop)
+      domain = self.prepare_shop(shop)
       account = Account.find_by(domain: domain)
 
       return true unless account
