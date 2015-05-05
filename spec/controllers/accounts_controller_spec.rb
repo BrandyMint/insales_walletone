@@ -45,7 +45,7 @@ describe AccountsController, type: :controller do
     before(:each) do
       app.configure_api
       app.authorization_url
-      session[:app] = app
+      session[:app] = Marshal.dump(app)
     end
 
     it 'updates account' do
