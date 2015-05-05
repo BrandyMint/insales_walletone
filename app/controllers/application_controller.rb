@@ -53,7 +53,7 @@ protected
   end
 
   def current_app
-    session[:app]
+    Marshal.load(session[:app]) if session[:app]
   end
 
   def save_app(app)
