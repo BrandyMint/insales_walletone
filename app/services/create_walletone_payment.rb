@@ -22,7 +22,7 @@ protected
 
   def send_request_for_location(payment)
     uri = URI(payment.form.checkout_url)
-    response = HTTParty.post(uri, body: payment_to_body(payment))
+    response = Faraday.post(uri, payment_to_body(payment))
     "#{uri.scheme}://#{uri.host}#{response.headers['Location']}"
   end
 

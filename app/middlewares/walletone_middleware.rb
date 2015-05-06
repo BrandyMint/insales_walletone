@@ -19,9 +19,9 @@ class WalletoneMiddleware < Walletone::Middleware::Base
 
     payment.update!(status: 'paid')
     insales_params = calculate_insales_params(account, notify)
-    response = HTTParty.post(insales_result_url(account, :success), body: insales_params)
+    response = Faraday.post(insales_result_url(account, :success), insales_params)
 
-    if response.code == 200
+    if response.status == 200
       'ok'
     else
       raise 'server busy'
