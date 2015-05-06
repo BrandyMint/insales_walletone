@@ -1,4 +1,27 @@
 describe AccountsController, type: :controller do
+  context 'autologin' do
+    let(:account) { Fabricate(:account) }
+    let(:app)     { WalletoneApp.new(account.domain, account.password) }
+
+    before(:each) do
+      app.configure_api
+      app.authorization_url
+      session[:app] = Marshal.dump(app)
+    end
+
+    it 'should redirect guest to settings.redirect_url' do
+      get :autologin, token: '68d59'
+
+      expect(response).to redirect_to(Settings.redirect_url)
+    end
+
+    it 'should redirect user to root_path' do
+      get :autologin, token: app.auth_token
+
+      expect(response).to redirect_to(root_path)
+    end
+  end
+
   context 'install' do
     it 'should call install for WalletoneApp' do
       allow(WalletoneApp).to receive(:install).and_return(true)

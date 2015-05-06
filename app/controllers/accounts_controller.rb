@@ -6,6 +6,8 @@ class AccountsController < ApplicationController
     current_app.store_auth_token
     
     if current_app && current_app.authorize(params[:token])
+      save_app current_app
+
       redirect_to location || root_path
     else
       redirect_to Settings.redirect_url
