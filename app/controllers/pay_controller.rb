@@ -1,6 +1,7 @@
 class PayController < ApplicationController
   include UrlHelper
   skip_before_action :authenticate, :configure_api
+  skip_before_action :verify_authenticity_token
 
   def pay
     account = Account.find_by(walletone_shop_id: params[:shop_id])
