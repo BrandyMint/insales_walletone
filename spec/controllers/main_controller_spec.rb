@@ -5,7 +5,7 @@ describe MainController, type: :controller do
   before(:each) do
     WalletoneApp.api_key = 'my_key' # sometimes it resets
     app.authorization_url
-    session[:app] = Marshal.dump(app)
+    save_app(app)
   end
 
   context 'index' do

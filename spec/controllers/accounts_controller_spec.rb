@@ -6,7 +6,7 @@ describe AccountsController, type: :controller do
     before(:each) do
       app.configure_api
       app.authorization_url
-      session[:app] = Marshal.dump(app)
+      save_app(app)
     end
 
     it 'should redirect guest to settings.redirect_url' do
@@ -68,7 +68,7 @@ describe AccountsController, type: :controller do
     before(:each) do
       app.configure_api
       app.authorization_url
-      session[:app] = Marshal.dump(app)
+      save_app(app)
     end
 
     it 'updates account' do
