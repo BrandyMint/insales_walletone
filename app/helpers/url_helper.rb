@@ -1,4 +1,8 @@
 module UrlHelper
+  def shop_settings_url
+    "http://#{Settings.insales.api_host}"
+  end
+
   def redirect_url(path_type)
     "http://#{Settings.insales.api_host}/#{path_type}"
   end
