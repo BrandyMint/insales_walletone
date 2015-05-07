@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'main#index'
 
-  post 'pay' => 'pay#pay'
-  post 'fail' => 'pay#fail'
-  post 'success' => 'pay#success'
+  post  'pay' => 'pay#pay'
+  post  'fail' => 'pay#fail'
+  match 'success' => 'pay#success', via: [:get, :post]
 
   mount WalletoneMiddleware.new => '/walletone_result'
 
