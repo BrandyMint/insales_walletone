@@ -28,7 +28,7 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     Rails.logger.info "  insales_url: #{insales_url}"
     Rails.logger.info "  insales_params: #{insales_params}"
 
-    if response.status == 200
+    if [200, 302].include?(response.status)
       'ok'
     else
       Rails.logger.error "  server busy"
