@@ -24,6 +24,9 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     if response.status == 200
       'ok'
     else
+      Rails.logger.error 'Walletone middleware: server busy'
+      Rails.logger.error "  status: #{response.status}"
+      Rails.logger.error "  body: #{response.body}"
       raise 'server busy'
     end
   end
