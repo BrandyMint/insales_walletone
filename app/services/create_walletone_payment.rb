@@ -33,8 +33,8 @@ protected
       WMI_CURRENCY_ID:     @account.walletone_currency,
       WMI_PAYMENT_NO:      @form.transaction_id,
       WMI_DESCRIPTION:     @form.description,
-      WMI_SUCCESS_URL:     redirect_url(:success),
-      WMI_FAIL_URL:        redirect_url(:fail),
+      WMI_SUCCESS_URL:     insales_order_url(@account, @form.key),
+      WMI_FAIL_URL:        insales_order_url(@account, @form.key),
       WMI_RECIPIENT_LOGIN: @form.email || @form.phone,
       WMI_CUSTOMER_EMAIL:  @form.email,
       KEY:                 @form.key
