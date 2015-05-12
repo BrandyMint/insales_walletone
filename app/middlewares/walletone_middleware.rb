@@ -25,8 +25,8 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     insales_params = calculate_insales_params(account, notify)
     response = Faraday.post(insales_url, insales_params)
 
-    Rails.logger.error "  insales_url: #{insales_url}"
-    Rails.logger.error "  insales_params: #{insales_params}"
+    Rails.logger.info "  insales_url: #{insales_url}"
+    Rails.logger.info "  insales_params: #{insales_params}"
 
     if response.status == 200
       'ok'
