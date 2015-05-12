@@ -32,9 +32,12 @@ protected
   end
 
   def init_authorization
-    save_app WalletoneApp.new(account.domain, account.password)
+    app = WalletoneApp.new(account.domain, account.password)
+    authorization_url = app.authorization_url # for force salt generation
 
-    redirect_to current_app.authorization_url
+    save_app app
+    
+    redirect_to authorization_url
   end
 
   def store_location(path = nil)
