@@ -5,6 +5,8 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     account = Account.find_by(walletone_shop_id: notify[:WMI_MERCHANT_ID])
     payment = Payment.find_by(transaction_id: notify[:WMI_PAYMENT_NO])
 
+    Rails.logger.info 'Walletone middleware'
+
     unless payment
       raise 'undefined payment'
     end
@@ -18,13 +20,17 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     end
 
     payment.update!(status: 'paid')
+    insales_url = insales_result_url(account, :success)
     insales_params = calculate_insales_params(account, notify)
-    response = Faraday.post(insales_result_url(account, :success), insales_params)
+    response = Faraday.post(insales_url, insales_params)
+
+    Rails.logger.error "  insales_url: #{insales_url}"
+    Rails.logger.error "  insales_params: #{insales_params}"
 
     if response.status == 200
       'ok'
     else
-      Rails.logger.error 'Walletone middleware: server busy'
+      Rails.logger.error "  server busy"
       Rails.logger.error "  status: #{response.status}"
       Rails.logger.error "  body: #{response.body}"
       raise 'server busy'
