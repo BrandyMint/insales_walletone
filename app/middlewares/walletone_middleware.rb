@@ -5,7 +5,8 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     account = Account.find_by(walletone_shop_id: notify[:WMI_MERCHANT_ID])
     payment = Payment.find_by(transaction_id: notify[:WMI_PAYMENT_NO])
 
-    Rails.logger.info 'Walletone middleware'
+    Rails.logger.info "Walletone middleware"
+    Rails.logger.info "  notify: #{notify}"
 
     unless payment
       raise 'undefined payment'
