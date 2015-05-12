@@ -46,7 +46,7 @@ private
       shop_id:        notify[:WMI_MERCHANT_ID],
       amount:         notify[:WMI_PAYMENT_AMOUNT],
       transaction_id: notify[:WMI_PAYMENT_NO],
-      key:            notify[:key],
+      key:            notify[:KEY],
       paid:           1
     }
     insales_params[:signature] = insales_signature(insales_params, account.walletone_password)
