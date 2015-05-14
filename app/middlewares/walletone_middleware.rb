@@ -8,9 +8,9 @@ class WalletoneMiddleware < Walletone::Middleware::Base
     Rails.logger.info "Walletone middleware"
     Rails.logger.info "  notify: #{notify}"
 
-    unless payment
-      raise 'undefined payment'
-    end
+    # unless payment
+    #   raise 'undefined payment'
+    # end
 
     unless notify.valid?(account.walletone_password)
       raise 'invalid signature'
@@ -20,7 +20,7 @@ class WalletoneMiddleware < Walletone::Middleware::Base
       raise 'invalid state'
     end
 
-    payment.update!(status: 'paid')
+    payment.update!(status: 'paid') if payment
     insales_url = insales_result_url(account, :success)
     insales_params = calculate_insales_params(account, notify)
     response = Faraday.post(insales_url, insales_params)
@@ -46,7 +46,7 @@ private
       shop_id:        notify[:WMI_MERCHANT_ID],
       amount:         notify[:WMI_PAYMENT_AMOUNT],
       transaction_id: notify[:WMI_PAYMENT_NO],
-      key:            notify[:KEY],
+      key:            notify[:KEY] || notify[:key],
       paid:           1
     }
     insales_params[:signature] = insales_signature(insales_params, account.walletone_password)
