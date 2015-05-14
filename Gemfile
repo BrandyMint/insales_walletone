@@ -19,7 +19,7 @@ gem 'haml-rails'
 group :development do
   gem 'sqlite3', '~> 1.3.10'
 
-  gem 'spring'
+  gem 'spring', '~> 1.3.6'
   gem 'spring-commands-rspec'
 
   gem 'byebug'
