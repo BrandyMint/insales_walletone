@@ -10,7 +10,8 @@ class PayController < ApplicationController
     result  = CreateWalletonePayment.new(account, form).call
 
     redirect_to result.location
-  rescue
+  rescue Exception => e
+    logger.error "Pay error #{e.inspect}"
     redirect_to Settings.redirect_url
   end
 

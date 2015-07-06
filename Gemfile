@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 
 # core
-gem 'insales_api',   '~> 0.0.13'
+gem 'insales_api',   github: 'insales/insales_api'
 gem 'walletone',     '~> 0.1.2'
 gem 'settingslogic', '~> 2.0.9'
 gem 'faraday',       '~> 0.9.1'
